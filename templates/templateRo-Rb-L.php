@@ -2,8 +2,8 @@
 /**
  * Created by PhpStorm.
  * User: Joey
- * Date: 21-2-2018
- * Time: 10:49
+ * Date: 20-2-2018
+ * Time: 11:27
  */
 ?>
 <head>
@@ -12,9 +12,9 @@
 
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <link rel="stylesheet/less" type="text/css" href="assets/less/style.less">
+    <link rel="stylesheet/less" type="text/css" href="../assets/less/style.less">
 
-    <title>Template O-B</title>
+    <title>Template Ro-Rb-L</title>
 
 </head>
 <body>
@@ -23,19 +23,25 @@
 
     <div class="row">
 
-        <div id="O" class="col-12">
+        <div id="L" class="col-6">
 
             <!--Call function here-->
 
         </div>
 
-    </div>
+        <div class="row">
 
-    <div class="row">
+            <div id="Rb" class="col-6 offset-col-6">
 
-        <div id="B" class="col-12">
+                <!--Call function here-->
 
-            <!--Call function here-->
+            </div>
+
+            <div id="Ro" class="col-6 offset-col-6">
+
+                <!--Call function here-->
+
+            </div>
 
         </div>
 
