@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: Joey
  * Date: 21-2-2018
- * Time: 10:49
+ * Time: 10:58
  */
 ?>
 <head>
@@ -23,17 +23,13 @@
 
     <div class="row">
 
-        <div id="O" class="col-12">
+        <div id="L50" class="col-6">
 
             <!--Call function here-->
 
         </div>
 
-    </div>
-
-    <div class="row">
-
-        <div id="B" class="col-12">
+        <div id="R50" class="col-6">
 
             <!--Call function here-->
 
@@ -47,3 +43,4 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.0.0/less.min.js"></script>
 
 </body>
+
