@@ -14,7 +14,7 @@
 
     <link rel="stylesheet/less" type="text/css" href="assets/less/style.less">
 
-    <title>Template O-B</title>
+    <title>Template L-R</title>
 
 </head>
 <body>
