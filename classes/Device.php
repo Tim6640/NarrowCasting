@@ -50,6 +50,11 @@ class Device extends Crud
         //use extend crud sql delete
     }
 
+    public function selectDevice()
+    {
+        //use extend crud sql select
+    }
+
     public function bindTemplate($templateName)
     {
         // use extend crud sql update
@@ -58,6 +63,11 @@ class Device extends Crud
     public function bindComponent($componentID, $componentLocation)
     {
         //use extend crud sql update
+    }
+
+    public function selectDeviceComponentInfo()
+    {
+        //use extend crud sql select
     }
 
     /**
