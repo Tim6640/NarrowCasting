@@ -10,7 +10,7 @@ namespace classes_tests;
 use classes\Device;
 use PHPUnit\Framework\TestCase;
 
-class DeviceTests extends TestCase
+class DeviceTest extends TestCase
 {
     public function testShouldBeAbleToCreateInstance() {
         //arrange
@@ -27,8 +27,8 @@ class DeviceTests extends TestCase
         $module = new Device("deviceID");
 
         //act
-        $module->addDevice("testDevice", "testDeviceDescription", "testMacAddress");
-        $result = $module->selectDevice("id");
+        $module->addDevice("testDevice", "testDeviceDescription");
+        $result = $module->selectDevice();
 
         //assert
         $this->assertEquals("testDevice", $result[1]);
@@ -41,7 +41,7 @@ class DeviceTests extends TestCase
 
         //act
         $module->bindTemplate("templateName");
-        $result = $module->selectDevice("id");
+        $result = $module->selectDevice();
 
         //assert
         $this->assertEquals("templateName", $result['deviceTemplate']);
@@ -53,7 +53,7 @@ class DeviceTests extends TestCase
 
         //act
         $module->bindComponent("componentID", "componentLocation");
-        $result = $module->selectDeviceComponentInfo("id");
+        $result = $module->selectDeviceComponentInfo();
 
         //assert
         foreach ($result as $componentEntry){
