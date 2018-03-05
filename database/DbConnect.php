@@ -8,15 +8,13 @@
 
 namespace classes;
 
-
 class DbConnect
 {
     private $objDb;
 
-    //constructor
     public function __construct()
     {
-
+        include "dbConfig.php";
         try
         {
             $this->objDb = new PDO("mysql:host=" . HOST . ";dbname=" . DATABASE, USER, PASSWORDDB);
