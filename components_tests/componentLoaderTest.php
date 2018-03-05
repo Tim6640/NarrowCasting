@@ -9,8 +9,18 @@
 namespace components_tests;
 
 use PHPUnit\Framework\TestCase;
+use components\componentLoader;
 
 class componentLoaderTest extends TestCase
 {
+    public function testShouldBeAbleToCreateInstance(){
+        //arrange
+        $module = new componentLoader("componentID");
 
+        //act
+
+
+        //assert
+        $this->assertInstanceOf(componentLoader::class, $module);
+    }
 }
