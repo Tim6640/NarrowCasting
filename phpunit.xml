@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit colors="true">
     <testsuites>
-        <testsuite name="Component Test Suite">
-            <directory>components_tests</directory>
-        </testsuite>
         <testsuite name="Classes Test Suite">
-            <directory>classes_tests</directory>
+            <directory>./classes_tests</directory>
+        </testsuite>
+        <testsuite name="Component Test Suite">
+            <directory>./component_tests</directory>
         </testsuite>
     </testsuites>
 </phpunit>
