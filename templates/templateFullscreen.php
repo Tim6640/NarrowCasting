@@ -2,8 +2,8 @@
 /**
  * Created by PhpStorm.
  * User: Joey
- * Date: 21-2-2018
- * Time: 11:05
+ * Date: 7-3-2018
+ * Time: 14:11
  */
 
 
@@ -14,25 +14,9 @@ include "../includes/header.php";
 
     <div class="row">
 
-        <div id="R" class="col-6 offset-col-6">
+        <div id="fullscreen" class="col-12">
 
             <!--Call function here-->
-
-        </div>
-
-        <div class="row">
-
-            <div id="Lb" class="col-6">
-
-                <!--Call function here-->
-
-            </div>
-
-            <div id="Lo" class="col-6">
-
-                <!--Call function here-->
-
-            </div>
 
         </div>
 
@@ -44,3 +28,4 @@ include "../includes/header.php";
 <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.0.0/less.min.js"></script>
 
 </body>
+

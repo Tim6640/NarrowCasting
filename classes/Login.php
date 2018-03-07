@@ -49,7 +49,7 @@ class Login
     //Method.
     public function loginCustomer(){
 
-        $connect = new PDO('mysql:host=localhost;dbname=repaircafe', 'root' /*, $password*/);
+        $connect = new PDO('mysql:host=localhost;dbname=narrowcasting', 'root' /*, $password*/);
         $sql = $connect->prepare("");
         $sql->bindParam(':email',$this->_email, PDO::PARAM_STR);
         $sql->execute();
