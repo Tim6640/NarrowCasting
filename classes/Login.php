@@ -6,7 +6,7 @@
  * Time: 15:08
  */
 
-class login
+class Login
 {
     //properties.
     private $_email;
