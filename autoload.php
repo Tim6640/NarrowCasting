@@ -1,9 +1,16 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: tim11
- * Date: 20-2-2018
- * Time: 10:40
+ * Date: 6-3-2018
+ * Time: 09:09
  */
-spl_autoload_extensions('.php');
-spl_autoload_register();
+spl_autoload_register("autoload::componentLoader");
+
+class autoload
+{
+    static function componentLoader($className){
+        include $className . ".php";
+    }
+}
