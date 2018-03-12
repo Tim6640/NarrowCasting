@@ -8,9 +8,9 @@
  */
 namespace classes;
 
-use classes\Crud;
 
-class Device extends Crud
+
+class Device
 {
     private $_deviceID;
 
