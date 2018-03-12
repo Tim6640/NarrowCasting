@@ -98,7 +98,7 @@ class NSComponent
 
     public function view() {
         $result = $this->parse();
-
+        //https://www.screenimpact.nl/theater/ template
         // might be refresh solution
         $check = $result;
         if ($result !== $check){
