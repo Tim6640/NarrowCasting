@@ -8,7 +8,6 @@
  */
 namespace classes;
 
-use classes\Crud;
 
 class Device extends Crud
 {
