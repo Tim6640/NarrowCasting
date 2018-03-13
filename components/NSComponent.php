@@ -99,11 +99,41 @@ class NSComponent
     public function view() {
         $result = $this->parse();
         //https://www.screenimpact.nl/theater/ template
-        // might be refresh solution
-        $check = $result;
-        if ($result !== $check){
-            $result = $this->parse();
+
+        var_dump($result->VertrekkendeTrein[2]);
+
+        $NsItemArray = array();
+
+        $count = -1;
+
+        foreach($result->VertrekkendeTrein as $NSitem){
+
+            array_push($NsItemArray, $NSitem);
+
+            $count++;
+
+            print_r($NsItemArray[$count]->RitNummer);
+
         }
-        print_r($result);
+
+        return $NsItemArray;
+
     }
 }
+
+?>
+
+<div class="row">
+
+    <div>
+
+        <?php
+
+        $component = new NSComponent("http://webservices.ns.nl/ns-api-avt?station=Harderwijk", "tbeek6640@student.landstede.nl", "RspRrenSa25njpME8Rcc0slbpvS3RkUk4twK8bWL44vmIxiBU34_0w");
+        $component->view();
+
+        ?>
+
+    </div>
+
+</div>
