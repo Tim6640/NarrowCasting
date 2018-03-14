@@ -99,11 +99,77 @@ class NSComponent
     public function view() {
         $result = $this->parse();
         //https://www.screenimpact.nl/theater/ template
-        // might be refresh solution
-        $check = $result;
-        if ($result !== $check){
-            $result = $this->parse();
+
+        var_dump($result->VertrekkendeTrein[2]);
+
+        $NsItemArray = array();
+
+        $count = -1;
+
+        echo "<table class='table table-striped table-responsive'>";
+
+        echo "<thead>
+
+                <tr>
+                
+                    <th scope='col'>RitNummer</th>
+                    
+                    <th scope='col'>VertrekTijd</th>
+                    
+                    <th scope='col'>EindBestemming</th>
+                    
+                    <th scope='col'>TreinSoort</th>
+                                        
+                    <th scope='col'>Vervoerder</th>
+                    
+                    <th scope='col'>VertrekSpoor</th>
+                
+                </tr>
+                
+              </thead>";
+
+        foreach($result->VertrekkendeTrein as $NSitem){
+
+            echo "<tr>";
+
+            array_push($NsItemArray, $NSitem);
+
+            $count++;
+
+            echo "<td class='col'>" . $NsItemArray[$count]->RitNummer . "</td>";
+
+            echo "<td class='col'>" . substr($NsItemArray[$count]->VertrekTijd, 11, -8) . "</td>";
+
+            echo "<td class='col'>" . $NsItemArray[$count]->EindBestemming . "</td>";
+
+            echo "<td class='col'>" . $NsItemArray[$count]->TreinSoort . "</td>";
+
+            echo "<td class='col'>" . $NsItemArray[$count]->Vervoerder . "</td>";
+
+            echo "<td class='col'>" . $NsItemArray[$count]->VertrekSpoor . "</td>";
+
+            echo "</tr>";
+
         }
-        print_r($result);
+
+        echo "</table>";
+
     }
 }
+
+?>
+
+<div class="row">
+
+    <div>
+
+        <?php
+
+        $component = new NSComponent("http://webservices.ns.nl/ns-api-avt?station=Harderwijk", "tbeek6640@student.landstede.nl", "RspRrenSa25njpME8Rcc0slbpvS3RkUk4twK8bWL44vmIxiBU34_0w");
+        $component->view();
+
+        ?>
+
+    </div>
+
+</div>

@@ -50,9 +50,8 @@ class TemplateLoader extends Crud
         $this->prop_macAddress = $prop_macAddress;
     }
 
-    public function getTemplate(){
-        foreach ($this->getPropTemplateName() as $templateName){
-            switch ($templateName) {
+    public function getTemplate() {
+            switch ($this->getPropTemplateName()) {
                 default:
                     break;
                 case "Fullscreen":
@@ -73,4 +72,3 @@ class TemplateLoader extends Crud
             }
         }
     }
-}
