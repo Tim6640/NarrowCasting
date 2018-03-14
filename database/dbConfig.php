@@ -7,6 +7,6 @@
  */
 
 const HOST = "localhost";
-const DATABASE = "testcode";
+const DATABASE = "narrow_casting";
 const USER = "root";
 const PASSWORDDB = "";

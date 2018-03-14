@@ -6,8 +6,19 @@
  * Time: 9:14 AM
  */
 
-class Crud
+
+class Crud extends DbConnect
 {
+    /**
+     * This class has been build for the reason to make dynamic DB calls. The reason for this is that you don't need
+     * a lot of useless functions repeating each DB process. This class makes it possible to create an instance and
+     * give it the information the construtor needs and the what you want to send.
+     * EXAMPLE
+     * $colums = array("*");
+     * $getAllUsers = new Crud("user", $colums);
+     * $getAllUsers = $getAllUsers->selectFromTable();
+     */
+
 //properties
 
 private $prop_table;
@@ -18,9 +29,12 @@ private $prop_orderBy;
 private $prop_value;
 
 //constructor
-
-   public function __construct($table, $columns, $where, $whereConditions, $orderBy, $value)
+    /**
+     *  @param
+     */
+   public function __construct($table, $columns, $where='', $whereConditions='', $orderBy='', $value='')
     {
+        parent::__construct();
         $this->setPropTable($table);
         $this->setPropColumns($columns);
         $this->setPropWhere($where);
@@ -179,10 +193,13 @@ private $prop_value;
 
     $sql .= ")";
 
-    $db = new DbConnect();
-    $db = $db->connect();
+    //extends makes it possible to get to the connect methode within DbConnect.php.
+    $query = $this->connect()->prepare($sql);
 
-    $query = $db->prepare($sql);
+        // $db = new DbConnect();
+        // $db = $db->connect();
+        //
+        // $query = $db->prepare($sql);
     //looping through the foreach and getting the index from the columns. (the index numbers!) the $values will be binded to a certain Index number.
     foreach($columns as $columnIndex => $column) {
         $query->bindParam(":".$column , $values[$columnIndex]);
@@ -224,15 +241,11 @@ private $prop_value;
         {
             $sql .= " ORDER BY $orderBy";
         }
-
-        $db = new DbConnect();
-        $db = $db->connect();
-
-        $query = $db->prepare($sql);
+//        var_dump($this->connect());
+        $query = $this->connect()->prepare($sql);
         //binding the $wherecondition
         $query->bindParam(":".$whereConditions , $whereConditions);
         $query-> execute();
-
         $result = $query->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
@@ -265,10 +278,8 @@ private $prop_value;
         $sql .=" WHERE ";
         $sql .= " $where = :$whereConditions";
 
-        $db = new DbConnect();
-        $db = $db->connect();
+        $query = $this->connect()->prepare($sql);
 
-        $query = $db->prepare($sql);
         //looping through the foreach and getting the index from the columns. (the index numbers!) the $newValues will be binded to a certain Index number.
         foreach($columns as $columnIndex => $column) {
             $query->bindParam(":".$column , $newValues[$columnIndex]);
@@ -299,10 +310,7 @@ private $prop_value;
           }
           $counterColumns++;
       }
-      $db = new DbConnect();
-      $db = $db->connect();
-
-      $query = $db->prepare($sql);
+      $query = $this->connect()->prepare($sql);
       //binding the $wherecondition
       $query->bindParam(":".$column , $whereConditions);
       $query-> execute();
