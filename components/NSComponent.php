@@ -100,13 +100,13 @@ class NSComponent
         $result = $this->parse();
         //https://www.screenimpact.nl/theater/ template
 
-        var_dump($result->VertrekkendeTrein[2]);
+        //var_dump($result->VertrekkendeTrein[2]);
 
         $NsItemArray = array();
 
         $count = -1;
 
-        echo "<table class='table table-striped table-responsive'>";
+        echo "<table class='table table-striped'>";
 
         echo "<thead>
 
