@@ -6,6 +6,7 @@
  * Time: 11:05
  */
 
+$title = basename(__FILE__, '.php');
 
 include "../includes/header.php";
 ?>
