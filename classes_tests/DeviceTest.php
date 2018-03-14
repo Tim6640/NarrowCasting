@@ -46,19 +46,4 @@ class DeviceTest extends TestCase
         //assert
         $this->assertEquals("templateName", $result['deviceTemplate']);
     }
-
-    public function testShouldBeAbleToBindComponent() {
-        //arrange
-        $module = new Device("deviceID");
-
-        //act
-        $module->bindComponent("componentID", "componentLocation");
-        $result = $module->selectDeviceComponentInfo();
-
-        //assert
-        foreach ($result as $componentEntry){
-            $this->assertEquals("componentLocation", $componentEntry["componentLocation"]);
-            $this->assertEquals("componentID", $componentEntry["componentID"]);
-        }
-    }
 }
