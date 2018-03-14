@@ -106,17 +106,53 @@ class NSComponent
 
         $count = -1;
 
+        echo "<table class='table table-striped table-responsive'>";
+
+        echo "<thead>
+
+                <tr>
+                
+                    <th scope='col'>RitNummer</th>
+                    
+                    <th scope='col'>VertrekTijd</th>
+                    
+                    <th scope='col'>EindBestemming</th>
+                    
+                    <th scope='col'>TreinSoort</th>
+                                        
+                    <th scope='col'>Vervoerder</th>
+                    
+                    <th scope='col'>VertrekSpoor</th>
+                
+                </tr>
+                
+              </thead>";
+
         foreach($result->VertrekkendeTrein as $NSitem){
+
+            echo "<tr>";
 
             array_push($NsItemArray, $NSitem);
 
             $count++;
 
-            print_r($NsItemArray[$count]->RitNummer);
+            echo "<td class='col'>" . $NsItemArray[$count]->RitNummer . "</td>";
+
+            echo "<td class='col'>" . substr($NsItemArray[$count]->VertrekTijd, 11, -8) . "</td>";
+
+            echo "<td class='col'>" . $NsItemArray[$count]->EindBestemming . "</td>";
+
+            echo "<td class='col'>" . $NsItemArray[$count]->TreinSoort . "</td>";
+
+            echo "<td class='col'>" . $NsItemArray[$count]->Vervoerder . "</td>";
+
+            echo "<td class='col'>" . $NsItemArray[$count]->VertrekSpoor . "</td>";
+
+            echo "</tr>";
 
         }
 
-        return $NsItemArray;
+        echo "</table>";
 
     }
 }
