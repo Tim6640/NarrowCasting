@@ -24,10 +24,11 @@ class componentLoader
     {
         return $this->prop_componentName;
     }
+    private $_context;
 
     /**
      * @param mixed $prop_component
-     */
+    */
     public function setPropComponentName($prop_componentName)
     {
         $this->prop_componentName = $prop_componentName;

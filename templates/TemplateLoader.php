@@ -9,13 +9,14 @@ class TemplateLoader extends Crud
 {
     private $prop_templateName;
 
-    private $prop_macAddress;
+    private $prop_deviceID;
 
-    function __construct($macAddress)
+    function __construct($deviceID)
     {
-        parent::__construct("device", "templateName", "deviceDescription", $macAddress);
+        $columns = array("deviceDescription");
+        parent::__construct("device", $columns, "deviceDescription", $deviceID);
         $this->prop_templateName = $this->selectFromTable();;
-        $this->prop_macAddress = $macAddress;
+        $this->prop_deviceID = $deviceID;
     }
 
     /**
@@ -37,22 +38,21 @@ class TemplateLoader extends Crud
     /**
      * @return mixed
      */
-    public function getPropMacAddress()
+    public function getPropDeviceID()
     {
-        return $this->prop_macAddress;
+        return $this->prop_deviceID;
     }
 
     /**
-     * @param mixed $prop_macAddress
+     * @param mixed $prop_deviceID
      */
-    public function setPropMacAddress($prop_macAddress)
+    public function setPropDeviceID($prop_deviceID)
     {
-        $this->prop_macAddress = $prop_macAddress;
+        $this->prop_deviceID = $prop_deviceID;
     }
 
-    public function getTemplate(){
-        foreach ($this->getPropTemplateName() as $templateName){
-            switch ($templateName) {
+    public function getTemplate() {
+            switch ($this->getPropTemplateName()) {
                 default:
                     break;
                 case "Fullscreen":
@@ -73,4 +73,3 @@ class TemplateLoader extends Crud
             }
         }
     }
-}
