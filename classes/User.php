@@ -27,7 +27,6 @@ class User extends Crud
 // //        $this->setPropUserRole($userRole);
 //     }
 
-
     public function createUser()
     {
         $values = $this->getPropValue();

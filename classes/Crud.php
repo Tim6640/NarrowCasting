@@ -244,7 +244,7 @@ private $prop_value;
         {
             $sql .= " ORDER BY $orderBy";
         }
-//        var_dump($this->connect());
+
         $query = $this->connect()->prepare($sql);
         //binding the $wherecondition
         $query->bindParam(":".$whereConditions , $whereConditions);

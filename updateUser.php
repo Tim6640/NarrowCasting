@@ -12,8 +12,6 @@ function MyAutoload($strClass)  //autoloader die de classes laad
 }
 spl_autoload_register("MyAutoload");
 
-
-
 //$colums = array("userRoleID", "userName", "userPassword", "userEmail");
 //$values = array("1", "Christian", "password", "hoi5@gmail.com");
 //$test = new User("user" ,$colums, "", "", "", $values);
