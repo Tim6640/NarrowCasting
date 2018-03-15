@@ -97,7 +97,7 @@ class NSComponent
     }
 
     public function view() {
-        
+
         $result = $this->parse();
 
         $NsItemArray = array();

@@ -12,6 +12,8 @@
 
     <link rel="stylesheet/less" type="text/css" href="../assets/less/style.less">
 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <title><?php echo $title;  ?></title>
 
 </head>
