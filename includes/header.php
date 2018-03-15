@@ -13,6 +13,7 @@
     <link rel="stylesheet/less" type="text/css" href="../assets/less/style.less">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
 
     <title><?php echo $title;  ?></title>
 

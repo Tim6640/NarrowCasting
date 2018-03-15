@@ -110,17 +110,17 @@ class NSComponent
 
                 <tr align='center'>
                 
-                    <th>Rit nummer</th>
+                    <th>Rit nummer <i class='fas fa-hashtag'></i></th>
                     
-                    <th>Vertrek tijd</th>
+                    <th>Vertrek tijd <i class='far fa-clock'></i></th>
                     
-                    <th>Eind bestemming</th>
+                    <th>Eind bestemming <i class='far fa-building'></i></th>
                     
-                    <th>Trein soort</th>
+                    <th>Trein soort <i class='fas fa-train'></i></th>
                                         
-                    <th>Vervoerder</th>
+                    <th>Vervoerder <i class='far fa-user'></i></th>
                     
-                    <th>Vertrek spoor</th>
+                    <th>Vertrek spoor <i class='fas fa-road'></i></th>
                 
                 </tr>
                 
