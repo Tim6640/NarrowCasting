@@ -192,7 +192,10 @@ private $prop_value;
     }
 
     $sql .= ")";
-
+/*        $passwordHash = $values[2];
+        //moet maar 1 item(password) manipuleren/veranderen de rest moet hetzelfde blijven
+        $hashedPassword = password_hash($passwordHash, PASSWORD_BCRYPT);
+        $values[2] = $hashedPassword;*/
     //extends makes it possible to get to the connect methode within DbConnect.php.
     $query = $this->connect()->prepare($sql);
 
