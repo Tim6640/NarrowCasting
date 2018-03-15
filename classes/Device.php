@@ -1,28 +1,79 @@
 <?php
-
 /**
  * Created by PhpStorm.
  * User: tim11
  * Date: 14-2-2018
  * Time: 09:26
  */
-namespace classes;
-
-
-
-class Device
+/**
+ * @class
+ * @extends Crud
+ * this class is used for everything that has a relation with device
+ */
+class Device extends Crud
 {
-    private $_deviceID;
+    /**
+     * the device id
+     */
+    private $prop_deviceID;
 
-    private $_macAddress;
+    /**
+     * the mac address
+     */
+    private $prop_macAddress;
 
-    public function __construct($deviceID)
+    /**
+     * @construct
+     * calls the crud construct
+     * sets the device id based on the mac address
+     */
+    public function __construct()
     {
-        $this->_deviceID = $deviceID;
+        $this->prop_macAddress = $this->deviceMacAddress();
+        $columns = array("*");
+        parent::__construct("device", $columns, "deviceDescription", $this->getPropMacAddress());
+        $deviceInfo = $this->selectFromTable();
+        $this->prop_deviceID = $deviceInfo;
     }
 
+    /**
+     * @return $prop_macAddress
+     */
+    public function getPropMacAddress()
+    {
+        return $this->prop_macAddress;
+    }
+
+    /**
+     * @param $macAddress
+     */
+    private function setPropMacAddress($macAddress)
+    {
+        $this->prop_macAddress = $macAddress;
+    }
+
+    /**
+     * @return $prop_deviceID
+     */
+    public function getPropDeviceID()
+    {
+        return $this->prop_deviceID;
+    }
+
+    /**
+     * @param int $deviceID
+     */
+    public function setPropDeviceID($deviceID)
+    {
+        $this->prop_deviceID = $deviceID;
+    }
+
+    /**
+     * @return $macAddress
+     */
     private function deviceMacAddress()
     {
+        $result = "new exception";
         $ipAddress = $_SERVER['REMOTE_ADDR'];
         $arp = `arp -a $ipAddress`;
         $lines = explode("\n", $arp);
@@ -33,72 +84,68 @@ class Device
             $cols = preg_split('/\s+/', trim($line));
             if ($cols[0] == $ipAddress)
             {
-                $this->setMacAddress($cols[1]);
+                $result =  $cols[1];
             }
         }
+        return $result;
     }
 
-    public function addDevice($deviceName, $deviceDescription)
+    /**
+     * @param string $templateName
+     * @param int $device_templateID
+     * binds the template to the device
+     */
+    public function bindTemplate($templateName, $device_templateID)
     {
-        //use extend crud sql create
-        //check if there is a mac address
-        // $this->_macAddress = $this->deviceMacAddress();
+        //needs change cause of new db table: device_template
+        //solution= identify which row needs to be updated
+        $columns = array("templateName");
+        parent::__construct("device_template", $columns,"device_templateID", $device_templateID,"", $templateName);
+        $this->updateIntoTable();
     }
 
-    public function deleteDevice()
-    {
-        //use extend crud sql delete
-    }
-
-    public function selectDevice()
-    {
-        //use extend crud sql select
-    }
-
-    public function bindTemplate($templateName)
-    {
-        // use extend crud sql update
-    }
-
+    /**
+     * @param int $componentID
+     * @param string $componentLocation
+     * binds the component to the device
+     */
     public function bindComponent($componentID, $componentLocation)
     {
-        //use extend crud sql update
-    }
-
-    public function selectDeviceComponentInfo()
-    {
-        //use extend crud sql select
-    }
-
-    /**
-     * @return the $mac
-     */
-    public function getMacAddress()
-    {
-        return $this->_macAddress;
+        //needs change cause of db table: device_component
+        //solution= identify which row needs to be updated
+        $columns = array("componentID", "componentLocation");
+        $values = array($componentID, $componentLocation);
+        parent::__construct("device_component", $columns,"componentID", $componentID,"", $values);
+        $this->updateIntoTable();
     }
 
     /**
-     * @param the $macAddress
+     * @param string $deviceName
+     * creates a new device
      */
-    private function setMacAddress($macAddress)
-    {
-        $this->_macAddress = $macAddress;
+    public function createDevice($deviceName){
+        $columns = array("deviceName", "deviceDescription");
+        $values = array($deviceName, $this->getPropMacAddress());
+        parent::__construct("device", $columns,"","", "", $values);
+        $this->insertIntoTable();
     }
 
     /**
-     * @return mixed
+     * @param string $deviceName
+     * updates the device name of the device
      */
-    public function getDeviceID()
-    {
-        return $this->_deviceID;
+    public function changeDeviceName($deviceName){
+        $columns = array("deviceName");
+        parent::__construct("device", $columns,"deviceID", $this->getPropDeviceID(),"", $deviceName);
+        $this->updateIntoTable();
     }
 
     /**
-     * @param mixed $deviceID
+     * @return array device component info
      */
-    public function setDeviceID($deviceID)
-    {
-        $this->_deviceID = $deviceID;
+    public function getDeviceComponentInfo(){
+        $columns = array("*");
+        parent::__construct("device_component", $columns, "deviceID", $this->getPropDeviceID());
+        return $this->selectFromTable();
     }
 }

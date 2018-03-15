@@ -17,7 +17,14 @@ include "../includes/header.php";
 
         <div id="fullscreen" class="col-12">
 
-            <!--Call function here-->
+            <?php
+            $device = new Device();
+            foreach($device->getDeviceComponentInfo() as $componentInfo) {
+                $params = array();
+                $component = new ComponentLoader($device->getPropDeviceID(), "", $params);
+                $component->getView();
+            }
+            ?>
 
         </div>
 

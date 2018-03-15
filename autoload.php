@@ -11,6 +11,6 @@ spl_autoload_register("autoload::componentLoader");
 class autoload
 {
     static function componentLoader($className){
-        include $className . ".php";
+        include "classes/".$className . ".php";
     }
 }
