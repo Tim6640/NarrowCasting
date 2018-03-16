@@ -2,8 +2,8 @@
 /**
  * Created by PhpStorm.
  * User: Joey
- * Date: 21-2-2018
- * Time: 10:58
+ * Date: 7-3-2018
+ * Time: 14:11
  */
 
 $title = basename(__FILE__, '.php');
@@ -15,15 +15,16 @@ include "../includes/header.php";
 
     <div class="row">
 
-        <div id="L50" class="col-6">
+        <div id="fullscreen" class="col-12">
 
-            <!--Call function here-->
-
-        </div>
-
-        <div id="R50" class="col-6">
-
-            <!--Call function here-->
+            <?php
+            $device = new Device();
+            foreach($device->getDeviceComponentInfo() as $componentInfo) {
+                $params = array();
+                $component = new ComponentLoader($device->getPropDeviceID(), "", $params);
+                $component->getView();
+            }
+            ?>
 
         </div>
 
