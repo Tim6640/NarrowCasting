@@ -7,11 +7,13 @@
  */
 
 $title = basename(__FILE__, '.php');
-include_once("autoload.php");
 
+include_once("autoload.php");
+include "templates/templateLoader.php";
 include "includes/header.php";
 
-use components\NSComponent;
+$device = new Device();
+$template = new TemplateLoader($device->getPropDeviceID());
+$template->getTemplate();
+?>
 
-$component = new NSComponent("http://webservices.ns.nl/ns-api-avt?station=Harderwijk", "tbeek6640@student.landstede.nl", "RspRrenSa25njpME8Rcc0slbpvS3RkUk4twK8bWL44vmIxiBU34_0w");
-//$component->view();

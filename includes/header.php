@@ -17,5 +17,5 @@
 </head>
 <body>
 <div class="header-logo">
-    <img src="../assets/img/Landstede_logo.png" alt="http://www.ondile.nl/magento/media/catalog/category/Landstede_logo_600x240px.png">
+    <img src="assets/img/Landstede_logo.png" alt="http://www.ondile.nl/magento/media/catalog/category/Landstede_logo_600x240px.png">
 </div>

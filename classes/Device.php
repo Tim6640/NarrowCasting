@@ -30,10 +30,11 @@ class Device extends Crud
     public function __construct()
     {
         $this->prop_macAddress = $this->deviceMacAddress();
-        $columns = array("*");
-        parent::__construct("device", $columns, "deviceDescription", $this->getPropMacAddress());
+        $columns = array("deviceID");
+        $macAdress = $this->deviceMacAddress();
+        parent::__construct("device", $columns, "deviceDescription", $macAdress);
         $deviceInfo = $this->selectFromTable();
-        $this->prop_deviceID = $deviceInfo;
+        $this->prop_deviceID = $deviceInfo[0]['deviceID'];
     }
 
     /**
@@ -73,21 +74,16 @@ class Device extends Crud
      */
     private function deviceMacAddress()
     {
-        $result = "new exception";
-        $ipAddress = $_SERVER['REMOTE_ADDR'];
-        $arp = `arp -a $ipAddress`;
-        $lines = explode("\n", $arp);
-        $macAddress = null;
+        ob_start(); // Turn on output buffering
+        system("ipconfig /all"); //Execute external program to display output
+        $mycom = ob_get_contents(); // Capture the output into a variable
+        ob_clean(); // Clean (erase) the output buffer
 
-        foreach ($lines as $line)
-        {
-            $cols = preg_split('/\s+/', trim($line));
-            if ($cols[0] == $ipAddress)
-            {
-                $result =  $cols[1];
-            }
-        }
-        return $result;
+        $findme = "Physical";
+        $pmac = strpos($mycom, $findme); // Find the position of Physical text
+        $mac = substr($mycom, ($pmac + 36), 17); // Get Physical Address
+
+        return $mac;
     }
 
     /**

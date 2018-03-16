@@ -15,6 +15,7 @@ class componentLoader
     {
         $this->prop_componentName = $componentName;
         $this->prop_params = $params;
+        include_once("components/".$this->getPropComponentName(). ".php");
     }
 
     /**
@@ -35,21 +36,11 @@ class componentLoader
     }
 
     /**
-     * @return string the params
+     * @return array the params
      */
     public function getPropParams()
     {
-        foreach ($this->prop_params as $param){
-            $params = $param;
-            $counter = 1;
-            $countArray = count($this->prop_params);
-            if ($counter < $countArray)
-            {
-                $params .= ", ";
-            }
-            $counter++;
-        }
-        return $params;
+        return $this->prop_params;
     }
 
     /**
@@ -65,7 +56,8 @@ class componentLoader
      */
     public function getView(){
         $component = $this->getPropComponentName();
-        $component($this->getPropParams());
-        return $component->view();
+        $params = $this->getPropParams();
+        $newComponent = new $component(...$params);
+        return $newComponent->view();
     }
 }
