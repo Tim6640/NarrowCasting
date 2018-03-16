@@ -105,22 +105,24 @@ class NSComponent
         $count = -1;
 
         echo "<table class='table table-striped'>";
+        
+        echo "<h3 style='color: #040156; font-weight: bold; font-size: 30px;'>Vertrektijden vanaf station Harderwijk.<i><img id='NSlogo' src='../assets/img/ns_logo_1.png' /></i></h3>";
 
         echo "<thead>
 
-                <tr align='center'>
+                <tr align='center' style='background-color: #FEF6E1;'>
                 
-                    <th>Rit nummer <i class='fas fa-hashtag'></i></th>
+                    <th>Ritnummer <i class='fas fa-hashtag'></i></th>
                     
-                    <th>Vertrek tijd <i class='far fa-clock'></i></th>
+                    <th>Tijd <i class='far fa-clock'></i></th>
                     
                     <th>Eind bestemming <i class='far fa-building'></i></th>
                     
-                    <th>Trein soort <i class='fas fa-train'></i></th>
+                    <th>Trein <i class='fas fa-train'></i></th>
                                         
                     <th>Vervoerder <i class='far fa-user'></i></th>
                     
-                    <th>Vertrek spoor <i class='fas fa-road'></i></th>
+                    <th>Spoor <i class='fas fa-road'></i></th>
                 
                 </tr>
                 
@@ -128,7 +130,17 @@ class NSComponent
 
         foreach($result->VertrekkendeTrein as $NSitem){
 
-            echo "<tr align='center'>";
+            if($count % 2 == 0 )
+            {
+                $rowColour = '#FEF6E1';
+
+            }else{
+
+                $rowColour = '#FFFFFF';
+
+            }
+
+            echo "<tr id='" . $count . "' align='center' style='background-color: " . $rowColour . ";'>";
 
             array_push($NsItemArray, $NSitem);
 
@@ -140,7 +152,7 @@ class NSComponent
 
             echo "<td>" . $NsItemArray[$count]->EindBestemming . "</td>";
 
-            echo "<td>" . $NsItemArray[$count]->TreinSoort . "</td>";
+            echo "<td><img src='../assets/img/ns-logo.png'/> " . $NsItemArray[$count]->TreinSoort . "</td>";
 
             echo "<td>" . $NsItemArray[$count]->Vervoerder . "</td>";
 
