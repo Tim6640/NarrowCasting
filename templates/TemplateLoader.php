@@ -13,9 +13,10 @@ class TemplateLoader extends Crud
 
     function __construct($deviceID)
     {
-        $columns = array("deviceDescription");
-        parent::__construct("device", $columns, "deviceDescription", $deviceID);
-        $this->prop_templateName = $this->selectFromTable();;
+        $columns = array("templateName");
+        parent::__construct("device", $columns, "deviceID", $deviceID);
+        $templateInfo = $this->selectFromTable();
+        $this->prop_templateName = $templateInfo[0]['templateName'];
         $this->prop_deviceID = $deviceID;
     }
 

@@ -8,7 +8,6 @@
 
 $title = basename(__FILE__, '.php');
 
-include "../includes/header.php";
 ?>
 
 <div class="container-fluid">
@@ -19,11 +18,8 @@ include "../includes/header.php";
 
             <?php
             $device = new Device();
-            foreach($device->getDeviceComponentInfo() as $componentInfo) {
-                $params = array();
-                $component = new ComponentLoader($device->getPropDeviceID(), "", $params);
-                $component->getView();
-            }
+            $component = new componentLoader($device->getPropDeviceID(),"NSComponent",array("http://webservices.ns.nl/ns-api-avt?station=Harderwijk", "tbeek6640@student.landstede.nl", "RspRrenSa25njpME8Rcc0slbpvS3RkUk4twK8bWL44vmIxiBU34_0w"));
+            $component->getView();
             ?>
 
         </div>
@@ -31,9 +27,6 @@ include "../includes/header.php";
     </div>
 
 </div>
-
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.0.0/less.min.js"></script>
 
 </body>
 
