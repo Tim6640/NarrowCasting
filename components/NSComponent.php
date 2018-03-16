@@ -97,32 +97,30 @@ class NSComponent
     }
 
     public function view() {
-        $result = $this->parse();
-        //https://www.screenimpact.nl/theater/ template
 
-        var_dump($result->VertrekkendeTrein[2]);
+        $result = $this->parse();
 
         $NsItemArray = array();
 
         $count = -1;
 
-        echo "<table class='table table-striped table-responsive'>";
+        echo "<table class='table table-striped'>";
 
         echo "<thead>
 
-                <tr>
+                <tr align='center'>
                 
-                    <th scope='col'>RitNummer</th>
+                    <th>Rit nummer <i class='fas fa-hashtag'></i></th>
                     
-                    <th scope='col'>VertrekTijd</th>
+                    <th>Vertrek tijd <i class='far fa-clock'></i></th>
                     
-                    <th scope='col'>EindBestemming</th>
+                    <th>Eind bestemming <i class='far fa-building'></i></th>
                     
-                    <th scope='col'>TreinSoort</th>
+                    <th>Trein soort <i class='fas fa-train'></i></th>
                                         
-                    <th scope='col'>Vervoerder</th>
+                    <th>Vervoerder <i class='far fa-user'></i></th>
                     
-                    <th scope='col'>VertrekSpoor</th>
+                    <th>Vertrek spoor <i class='fas fa-road'></i></th>
                 
                 </tr>
                 
@@ -130,23 +128,23 @@ class NSComponent
 
         foreach($result->VertrekkendeTrein as $NSitem){
 
-            echo "<tr>";
+            echo "<tr align='center'>";
 
             array_push($NsItemArray, $NSitem);
 
             $count++;
 
-            echo "<td class='col'>" . $NsItemArray[$count]->RitNummer . "</td>";
+            echo "<td>" . $NsItemArray[$count]->RitNummer . "</td>";
 
-            echo "<td class='col'>" . substr($NsItemArray[$count]->VertrekTijd, 11, -8) . "</td>";
+            echo "<td>" . substr($NsItemArray[$count]->VertrekTijd, 11, -8) . "</td>";
 
-            echo "<td class='col'>" . $NsItemArray[$count]->EindBestemming . "</td>";
+            echo "<td>" . $NsItemArray[$count]->EindBestemming . "</td>";
 
-            echo "<td class='col'>" . $NsItemArray[$count]->TreinSoort . "</td>";
+            echo "<td>" . $NsItemArray[$count]->TreinSoort . "</td>";
 
-            echo "<td class='col'>" . $NsItemArray[$count]->Vervoerder . "</td>";
+            echo "<td>" . $NsItemArray[$count]->Vervoerder . "</td>";
 
-            echo "<td class='col'>" . $NsItemArray[$count]->VertrekSpoor . "</td>";
+            echo "<td>" . $NsItemArray[$count]->VertrekSpoor . "</td>";
 
             echo "</tr>";
 
@@ -159,7 +157,7 @@ class NSComponent
 
 ?>
 
-<div class="row">
+<div class="row no-margin">
 
     <div>
 

@@ -7,6 +7,7 @@
  */
 
 $title = basename(__FILE__, '.php');
+
 include_once("autoload.php");
 
 include "includes/header.php";
