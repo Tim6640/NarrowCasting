@@ -98,9 +98,13 @@ class NSComponent
 
         $count = -1;
 
+        echo "<div class='row no-margin'>";
+
+        echo "<div>";
+
         echo "<table class='table table-striped'>";
         
-        echo "<h3 style='color: #040156; font-weight: bold; font-size: 30px;'>Vertrektijden vanaf station Harderwijk.<i><img id='NSlogo' src='../assets/img/ns_logo_1.png' /></i></h3>";
+        echo "<h3 style='color: #040156; font-weight: bold; font-size: 30px;'>Vertrektijden vanaf station Harderwijk.<i><img id='NSlogo' src='assets/img/ns_logo_1.png' /></i></h3>";
 
         echo "<thead>
 
@@ -146,7 +150,7 @@ class NSComponent
 
             echo "<td>" . $NsItemArray[$count]->EindBestemming . "</td>";
 
-            echo "<td><img src='../assets/img/ns-logo.png'/> " . $NsItemArray[$count]->TreinSoort . "</td>";
+            echo "<td><img src='assets/img/ns-logo.png'/> " . $NsItemArray[$count]->TreinSoort . "</td>";
 
             echo "<td>" . $NsItemArray[$count]->Vervoerder . "</td>";
 
@@ -158,5 +162,8 @@ class NSComponent
 
         echo "</table>";
 
+        echo "</div>";
+
+        echo "</div>";
     }
 }
