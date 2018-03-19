@@ -133,15 +133,24 @@ class Device extends Crud
     public function changeDeviceName($deviceName){
         $columns = array("deviceName");
         parent::__construct("device", $columns,"deviceID", $this->getPropDeviceID(),"", $deviceName);
-        $this->updateIntoTable();
+        return $this->updateIntoTable();
     }
 
     /**
      * @return array device component info
      */
-    public function getDeviceComponentInfo(){
+    public function getDeviceComponentInfo($deviceID){
         $columns = array("*");
-        parent::__construct("device_component", $columns, "deviceID", $this->getPropDeviceID());
+        parent::__construct("device_component", $columns, "deviceID", $deviceID);
+        return $this->selectFromTable();
+    }
+
+    /**
+     * @return array all devices
+     */
+    public function selectAllDevices(){
+        $columns = array("*");
+        parent::__construct("device", $columns);
         return $this->selectFromTable();
     }
 }

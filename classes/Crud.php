@@ -50,7 +50,6 @@ private $prop_value;
     /**
      * @return mixed
      */
-
     public function getPropTable()
     {
         return $this->prop_table;
