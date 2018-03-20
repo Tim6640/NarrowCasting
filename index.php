@@ -9,12 +9,15 @@ $title = basename(__FILE__, '.php');
 
 include_once("autoload.php");
 include "includes/header.php";
-include "templates/TemplateLoader.php";
+
+$newDevice = new Device();
+$templates = $newDevice->getDeviceConfig();
+
 //slider {
 foreach ($templates as $template){
     //slide {
-    new TemplateLoader($template['templateID']);
+    $newTemplate = new Init($template['templateID'], $template['componentID'], $template['params']);
+    $newTemplate->getView();
     // }
 }
 // }
-?>

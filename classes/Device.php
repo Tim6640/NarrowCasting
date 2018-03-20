@@ -31,8 +31,8 @@ class Device extends Crud
     {
         $this->prop_macAddress = $this->deviceMacAddress();
         $columns = array("deviceID");
-        $macAdress = $this->deviceMacAddress();
-        parent::__construct("device", $columns, "deviceDescription", $macAdress);
+        $macAddress = $this->deviceMacAddress();
+        parent::__construct("device", $columns, "deviceMacAddress", $macAddress);
         $deviceInfo = $this->selectFromTable();
         $this->prop_deviceID = $deviceInfo[0]['deviceID'];
     }
@@ -88,32 +88,64 @@ class Device extends Crud
 
     /**
      * @param string $templateName
-     * @param int $device_templateID
      * binds the template to the device
      */
-    public function bindTemplate($templateName, $device_templateID)
+    public function bindTemplate($templateName)
     {
-        //needs change cause of new db table: device_template
-        //solution= identify which row needs to be updated
-        $columns = array("templateName");
-        parent::__construct("device_template", $columns,"device_templateID", $device_templateID,"", $templateName);
-        $this->updateIntoTable();
+        //Should be INNER JOIN
+        $this->setPropTable("template");
+        $this->setPropColumns(array("templateID"));
+        $this->setPropWhere("templateName");
+        $this->setPropWhereConditions("$templateName");
+        $templateID = $this->selectFromTable();
+
+        if($templateID !== null){
+            $this->setPropTable("device_template_component");
+            $this->setPropColumns(array("templateID"));
+            $this->setPropWhere("deviceID");
+            $this->setPropWhereConditions($this->getPropDeviceID());
+            $this->setPropValue(array($templateID));
+            $this->updateIntoTable();
+        } else {
+            "new Exception()";
+        }
     }
 
     /**
      * @param int $componentID
-     * @param string $componentLocation
-     * binds the component to the device
+     * @param string $componentParams
+     * binds the component with params to the device
      */
-    public function bindComponent($componentID, $componentLocation)
+    public function bindComponent($componentName, $componentParams)
     {
-        //needs change cause of db table: device_component
-        //solution= identify which row needs to be updated
-        $columns = array("componentID", "componentLocation");
-        $values = array($componentID, $componentLocation);
-        parent::__construct("device_component", $columns,"componentID", $componentID,"", $values);
-        $this->updateIntoTable();
+        //Should be INNER JOIN
+        $this->setPropTable("component");
+        $this->setPropColumns(array("componentID"));
+        $this->setPropWhere("componentName");
+        $this->setPropWhereConditions("$componentName");
+        $componentID = $this->selectFromTable();
+
+        if($componentID !== null) {
+            $this->setPropTable("device_template_component");
+            $this->setPropColumns(array("componentID", "params"));
+            $this->setPropWhere("deviceID");
+            $this->setPropWhereConditions($this->getPropDeviceID());
+            $this->setPropValue(array($componentID, "$componentParams"));
+            $this->updateIntoTable();
+        } else {
+            "new Exception()";
+        }
     }
+
+    public function getDeviceConfig(){
+        $this->setPropTable("device_template_component");
+        $this->setPropColumns(array("*"));
+        $this->setPropWhere("deviceID");
+        $this->setPropWhereConditions($this->getPropDeviceID());
+        return $this->selectFromTable();
+    }
+
+    ///////////////////////////////////////////////////Still needs update
 
     /**
      * @param string $deviceName
