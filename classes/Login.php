@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: Joey
+ * User: Christian
  * Date: 22/02/2018
  * Time: 15:08
  */
@@ -49,12 +49,6 @@ class Login
     //Method.
     public function loginCustomer(){
 
-        $connect = new PDO('mysql:host=localhost;dbname=narrowcasting', 'root' /*, $password*/);
-        $sql = $connect->prepare("");
-        $sql->bindParam(':email',$this->_email, PDO::PARAM_STR);
-        $sql->execute();
-
-        $row = $sql->fetchAll();
 
     }
 
