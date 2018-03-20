@@ -53,31 +53,18 @@ $time = date('H:i:s');
 
 <script>
 
-    function updateClock ( )
-    {
-        var currentTime = new Date ( );
-        var currentHours = currentTime.getHours ( );
-        var currentMinutes = currentTime.getMinutes ( );
-        var currentSeconds = currentTime.getSeconds ( );
+    setInterval(function () {
 
-        // Pad the minutes and seconds with leading zeros, if required
-        currentMinutes = ( currentMinutes / 12 ) ? currentHours - 12 : currentHours;
+        var d      = new Date();
+        var hour   = d.getHours();
+        var minute = d.getMinutes();
+        //var second = d.getSeconds();
+        var element;
 
-        // Convert an hours component of "0" to "12"
-        currentHours = ( currentHours == 0 ) ? 12 : currentHours;
-
-        // Compose the string for display
-        var currentTimeString = currentHours + ":" + currentMinutes + ":" + currentSeconds + " " + timeOfDay;
-
-
-        $("#time").html(currentTimeString);
-
-    }
-
-    $(document).ready(function()
-    {
-        setInterval('updateClock()', 1000);
-    },1000);
-    }
+        element = document.getElementById("time");
+        if (element) {
+            element.innerHTML = hour + ":" + minute;
+        }
+    },1000)
 
 </script>
