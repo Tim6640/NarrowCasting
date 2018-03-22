@@ -38,11 +38,11 @@ if (isset($_GET['id'])){
 
         <div class="row">
 
-            <div class="col">
+            <div class="col-2">
 
                 <h1>Beheer</h1>
 
-                <div class="col-1">
+                <div>
 
                     <ul>
 
@@ -87,6 +87,7 @@ if (isset($_GET['id'])){
     </div>
 
     <script>
+
         /*this code puts the date and time in the header of the CMS dashboard. It is refreshed every second to allow for an exact representation of the time and date.*/
         setInterval(function () {
 
