@@ -25,7 +25,6 @@ class componentLoader
     {
         return $this->prop_componentName;
     }
-    private $_context;
 
     /**
      * @param mixed $prop_component

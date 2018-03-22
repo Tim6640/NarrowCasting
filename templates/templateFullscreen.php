@@ -18,7 +18,18 @@ $title = basename(__FILE__, '.php');
 
             <?php
             $device = new Device();
-            $component = new componentLoader($device->getPropDeviceID(),"NSComponent",array("http://webservices.ns.nl/ns-api-avt?station=Harderwijk", "tbeek6640@student.landstede.nl", "RspRrenSa25njpME8Rcc0slbpvS3RkUk4twK8bWL44vmIxiBU34_0w"));
+            $deviceID = $device->getPropDeviceID();
+            $deviceInfo = $device->getDeviceComponentInfo($deviceID);
+            $component = new Component();
+            $componentInfo = $component->selectComponent($deviceID);
+            var_dump($componentInfo);
+            $componentName = $componentInfo['componentName'];
+            $params = array(
+                $deviceInfo[0]['componentSource'],
+                $deviceInfo[0]['componentUsername'],
+                $deviceInfo[0]['componentPassword']
+            );
+            $component = new componentLoader($deviceID, $componentName, $params);
             $component->getView();
             ?>
 
