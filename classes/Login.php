@@ -6,50 +6,47 @@
  * Time: 15:08
  */
 
-class Login
+class Login extends Crud
 {
-    //properties.
-    private $_email;
-    private $_password;
 
-    //Constructor.
-    public function __construct($email, $password){
-
-        $this->setUsername($email);
-        $this->setPassword($password);
-
-    }
-
-    //Setters.
-    public function setUsername($email){
-
-        $this->_email = $email;
-
-    }
-
-    public function setPassword($password){
-
-        $this->_password = $password;
-
-    }
-
-    //Getters.
-    public function getUsername(){
-
-        return $this->_email;
-
-    }
-
-    public function getPassword(){
-
-        return $this->_password;
-
-    }
 
     //Method.
-    public function loginCustomer(){
+    public function loginVerification($userEmail, $userPassword)
+    {
+        $getUserInfo = $this->selectFromTable();
+        foreach ($getUserInfo as $item)
+        {
+            $email = $item['userEmail'];
+            $password = $item['userPassword'];
 
+
+        if($email == $userEmail)
+        {
+            $password = $password;
+            if (password_verify($userPassword, $password))
+            {
+                echo "<script> alert('correct'); </script>";
+//                return array('id' => $data['klantID'], 'vNaam' => $data['klantVoorNaam'], 'aNaam' => $data['klantAchterNaam']);
+            }
+            else
+            {
+                echo "<script> alert('wrong'); </script>";
+                return false;
+            }
+        }
+            else
+            {
+                echo "<script> alert('wrong'); </script>";
+                return false;
+            }
+        }
+        if($getUserInfo == NULL)
+        {
+            echo "<script> alert('wrong'); </script>";
+            return false;
+        }
 
     }
+
 
 }

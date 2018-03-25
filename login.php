@@ -7,34 +7,36 @@
  */
 
 include "includes/header.php";
+
+function MyAutoload($strClass)
+{
+    require_once('classes/'.$strClass.'.php');
+}
+spl_autoload_register("MyAutoload");
+
+if(isset($_POST['sendVerification']))
+{
+$table = "user";
+$colums = array("*");
+$where="userEmail";
+$whereConditions = $_POST['userEmail'];
+$loginVerification = new Login($table, $colums, "$where", $whereConditions, "", "");
+$loginVerification = $loginVerification->loginVerification($_POST['userEmail'], $_POST['userPassword']);
+}
+
 ?>
 
 <body>
-
 <div class="container">
 
-    <form class="form-signin">
+    <form method="POST">
         <h2 class="form-signin-heading">Please sign in</h2>
         <label for="inputEmail" class="sr-only">Email address</label>
-        <input id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="" type="email">
+        <input type="email" name="userEmail" class="form-control" placeholder="Email address" required="" autofocus=""><br>
         <label for="inputPassword" class="sr-only">Password</label>
-        <input id="inputPassword" class="form-control" placeholder="Password" required="" type="password">
-        <div class="checkbox">
-            <label>
-                <input value="remember-me" type="checkbox"> Remember me
-            </label>
-        </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <input type="password" name="userPassword" class="form-control" placeholder="Password" required=""><br>
+        <input type="submit" value="Submit" class="btn btn-lg btn-primary btn-block" name="sendVerification">
     </form>
-
-</div> <!-- /container -->
-
-
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
-
+</div>
 
 </body>
