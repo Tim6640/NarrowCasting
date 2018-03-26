@@ -19,14 +19,16 @@ if (isset($_GET['id'])){
         var_dump($componentInfo);
     }
 }*/
-
+$title = basename(__FILE__, '.php');
 ?>
 <head>
+
+    <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet/less" type="text/css" href="assets/less/style.less">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.0.0/less.min.js" ></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.0.0/less.min.js"></script>
 
     <title><?php echo $title  ?></title>
 
@@ -36,13 +38,54 @@ if (isset($_GET['id'])){
 
     <div class="container-fluid">
 
-        <div class="row">
+        <div class="row blue">
 
             <div class="col-2">
 
-                <h1>Beheer</h1>
+                <img src="assets/img/Landstede_logo.png" alt=""><h1>Beheer</h1>
 
-                <div>
+                <!--<div>
+
+                    <ul>
+
+                        <?php
+/*
+                        include "includes/cmsMenu.php";
+
+                        */?>
+
+                    </ul>
+
+                    <button>Settings</button>
+
+                </div>-->
+
+            </div>
+
+            <div class="col-10">
+
+                <div class="row">
+
+                    <h2>Componenten</h2>
+
+                    <h2 id="time"></h2>
+
+                    <p>U bent ingelogd als "[username]" <br><br><a style="float: right;" href="#">Log uit.</a></p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div>
+
+                <div class="col-2 mac-list">
+
+                    <h3><u>Connected Devices:</u></h3>
+                    <p><sub>(Click a device to access the components)</sub></p>
 
                     <ul>
 
@@ -62,25 +105,9 @@ if (isset($_GET['id'])){
 
             <div class="col-10">
 
-                <div class="row">
-
-                    <h1>Componenten</h1>
-
-                    <h1 id="time"></h1>
-
-                    <p>U bent ingelogd als "[username]" <br><br><a style="float: right;" href="#">Log uit.</a></p>
-
-                </div>
+                <!-- This spot is reserved for the implementation of various dashboard settingscreens. -->
 
             </div>
-
-        </div>
-
-        <div class="row">
-
-            <div></div>
-
-            <div></div>
 
         </div>
 
