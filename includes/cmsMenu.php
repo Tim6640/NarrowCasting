@@ -12,7 +12,7 @@
 
     foreach ($device->selectAllDevices() as $deviceInfo){
 
-        echo "<li><a href='cms.php?id=".$deviceInfo['deviceID']."'>".$deviceInfo['deviceName']."</a></li>";
+        echo "<li><i class='fas fa-caret-right'></i>  <a href='cms.php?id=".$deviceInfo['deviceID']."'>".$deviceInfo['deviceName']."</a></li>";
 
         echo "<br>";
 
