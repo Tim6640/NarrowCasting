@@ -70,7 +70,7 @@ $title = basename(__FILE__, '.php');
 
                     <h2 id="time"></h2>
 
-                    <p>U bent ingelogd als "[username]" <br><br><a style="float: right;" href="#">Log uit.</a></p>
+                    <p>U bent ingelogd als "[username]" (<a href="//localhost/cms.php"> Log uit.</a>)</p>
 
                 </div>
 
@@ -80,12 +80,10 @@ $title = basename(__FILE__, '.php');
 
         <div class="row">
 
-            <div>
-
                 <div class="col-2 mac-list">
 
                     <h3><u>Connected Devices:</u></h3>
-                    <p><sub>(Click a device to access the components)</sub></p>
+                    <p>(Click a device to access the components)</p>
 
                     <ul>
 
@@ -101,9 +99,8 @@ $title = basename(__FILE__, '.php');
 
                 </div>
 
-            </div>
 
-            <div class="col-10">
+            <div class="col-10 templates">
 
                 <!-- This spot is reserved for the implementation of various dashboard settingscreens. -->
 
