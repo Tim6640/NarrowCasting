@@ -6,7 +6,7 @@
  * Time: 08:46
  */
 
-const HOST = "narrowcasting.realdesigner.nl";
+const HOST = "localhost";
 const DATABASE = "narrow_casting";
 const USER = "root";
 const PASSWORDDB = "Landstede";
