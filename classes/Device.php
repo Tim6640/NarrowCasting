@@ -34,7 +34,7 @@ class Device extends Crud
         $macAddress = $this->deviceMacAddress();
         parent::__construct("device", $columns, "deviceMacAddress", $macAddress);
         $deviceInfo = $this->selectFromTable();
-        $this->prop_deviceID = $deviceInfo[0]['deviceID'];
+        @$this->prop_deviceID = $deviceInfo[0]['deviceID']; //the @ symbol prevents the error notice from displaying, this error should be resolved in future additions.
     }
 
     /**
