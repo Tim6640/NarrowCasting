@@ -8,10 +8,17 @@
 session_start();
 if(!isset($_SESSION['login']))
 {
-    header("Location: ../login/loginUser.php");
+    header("Location: login.php");
     exit;
 }
 $username = $_SESSION['login']['username'];
+
+if (isset($_POST['logOut']))
+{
+    session_destroy();
+    header("Location: login.php");
+    die();
+}
 //include "includes/cmsMenu.php";
 //include "includes/header.php";
 
@@ -77,7 +84,7 @@ $title = basename(__FILE__, '.php');
 
                     <h2 id="time"></h2>
 
-                    <p>Welkom <?php echo $username; ?> <a href="//localhost/cms.php"> Log uit.</a></p>
+                    <p>Welkom <?php echo $username; ?>  <form method="POST">    <input type="submit" value="Log uit" name="logOut"> </form> </p>
 
                 </div>
 
