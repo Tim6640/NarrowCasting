@@ -18,6 +18,7 @@ class Login extends Crud
         {
             $email = $item['userEmail'];
             $password = $item['userPassword'];
+            $username = $item['userName'];
 
 
         if($email == $userEmail)
@@ -26,24 +27,27 @@ class Login extends Crud
             if (password_verify($userPassword, $password))
             {
                 echo "<script> alert('correct'); </script>";
-//                return array('id' => $data['klantID'], 'vNaam' => $data['klantVoorNaam'], 'aNaam' => $data['klantAchterNaam']);
+                return array('username' => $username);
             }
             else
             {
-                echo "<script> alert('wrong'); </script>";
+                echo "<script> alert('Deze gegevens bestaan of kloppen niet.'); </script>";
                 return false;
+                die();
             }
         }
             else
             {
-                echo "<script> alert('wrong'); </script>";
+                echo "<script> alert('Deze gegevens bestaan of kloppen niet.'); </script>";
                 return false;
+                die();
             }
         }
         if($getUserInfo == NULL)
         {
-            echo "<script> alert('wrong'); </script>";
+            echo "<script> alert('Deze gegevens bestaan of kloppen niet.'); </script>";
             return false;
+            die();
         }
 
     }

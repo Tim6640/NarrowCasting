@@ -5,14 +5,15 @@
  * Date: 23-3-2018
  * Time: 08:48
  */
-
+session_start();
 include "includes/header.php";
+include_once("autoload.php");
 
-function MyAutoload($strClass)
+if(isset($_SESSION['login']))
 {
-    require_once('classes/'.$strClass.'.php');
+    header("Location: cms.php");
+    exit;
 }
-spl_autoload_register("MyAutoload");
 
 if(isset($_POST['sendVerification']))
 {
@@ -22,6 +23,19 @@ $where="userEmail";
 $whereConditions = $_POST['userEmail'];
 $loginVerification = new Login($table, $colums, "$where", $whereConditions, "", "");
 $loginVerification = $loginVerification->loginVerification($_POST['userEmail'], $_POST['userPassword']);
+
+    if ($loginVerification)
+    {
+        $_SESSION['login']=$loginVerification;
+        header("Location: cms.php");
+        exit;
+    }
+    else
+    {
+        echo"
+          <script>alert ('login is onjuist') </script>
+        ";
+    }
 }
 
 ?>
