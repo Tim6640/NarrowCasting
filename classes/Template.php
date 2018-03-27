@@ -32,6 +32,6 @@ class Template extends Crud
     }
 
     public function selectAllTemplates(){
-        $this->selectFromTable();
+        return $this->selectFromTable();
     }
 }
