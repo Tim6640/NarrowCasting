@@ -5,6 +5,13 @@
  * Date: 16-3-2018
  * Time: 11:53
  */
+session_start();
+if(!isset($_SESSION['login']))
+{
+    header("Location: ../login/loginUser.php");
+    exit;
+}
+$username = $_SESSION['login']['username'];
 //include "includes/cmsMenu.php";
 //include "includes/header.php";
 
@@ -70,7 +77,7 @@ $title = basename(__FILE__, '.php');
 
                     <h2 id="time"></h2>
 
-                    <p>U bent ingelogd als "[username]" (<a href="//localhost/cms.php"> Log uit.</a>)</p>
+                    <p>Welkom <?php echo $username; ?> <a href="//localhost/cms.php"> Log uit.</a></p>
 
                 </div>
 
