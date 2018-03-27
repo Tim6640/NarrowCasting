@@ -4,7 +4,11 @@
  * User: tim11
  * Date: 5-3-2018
  * Time: 11:52
+ * last edited by user: jpleunis7297 on March 20th 2018.
  */
+
+//include "../includes/header.php";
+
 class NSComponent
 {
     private $prop_url;
@@ -88,6 +92,9 @@ class NSComponent
             //throw new Exception($info["http_code"]);
             $result = "exception";
         }
+
+//        var_dump($result);
+
         return $result;
     }
 
@@ -146,7 +153,15 @@ class NSComponent
 
             echo "<td>" . $NsItemArray[$count]->RitNummer . "</td>";
 
-            echo "<td>" . substr($NsItemArray[$count]->VertrekTijd, 11, -8) . "</td>";
+            echo "<td>" . substr($NsItemArray[$count]->VertrekTijd, 11, -8) . "<br>";
+
+                            if ($NsItemArray[$count]->VertrekVertragingTekst){
+
+                                echo "<h6 style='font-size:12px; color:red;'> " . $NsItemArray[$count]->VertrekVertragingTekst . ".</h6>";
+
+                            }
+
+            echo "</td>";
 
             echo "<td>" . $NsItemArray[$count]->EindBestemming . "</td>";
 
@@ -167,3 +182,12 @@ class NSComponent
         echo "</div>";
     }
 }
+
+/*$t = new NSComponent("http://webservices.ns.nl/ns-api-avt?station=Harderwijk", "tbeek6640@student.landstede.nl", "RspRrenSa25njpME8Rcc0slbpvS3RkUk4twK8bWL44vmIxiBU34_0w");
+$t->view();*/
+
+
+?>
+
+<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script defer src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.0.0/less.min.js"></script>-->
