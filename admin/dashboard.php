@@ -6,7 +6,7 @@
  * Time: 11:37
  */
 $breadCrumb = basename(__FILE__, '.php');
-include_once("includes/cmsHeader.php");
+include_once("../includes/cmsHeader.php");
 
 $component = new Component();
 $template = new Template();
@@ -24,10 +24,10 @@ if(isset($_GET['id'])){
             <div class="col-md-3">
                 <div class="list-group">
                     <a href="dashboard.php" class="list-group-item active main-color-bg"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Dashboard</a>
-                    <a href="admin/devices.php" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Devices <span class="badge"><?php echo count($device->selectAllDevices())?></span></a>
-                    <a href="admin/components.php" class="list-group-item"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Components <span class="badge"><?php echo count($component->selectAllComponents())?></span></a>
-                    <a href="admin/users.php" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Users <span class="badge"><?php echo count($user->selectAllUsers())?></span></a>
-                    <a href="admin/settings.php" class="list-group-item"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Settings </a>
+                    <a href="devices.php" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Devices <span class="badge"><?php echo count($device->selectAllDevices())?></span></a>
+                    <a href="components.php" class="list-group-item"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Components <span class="badge"><?php echo count($component->selectAllComponents())?></span></a>
+                    <a href="users.php" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Users <span class="badge"><?php echo count($user->selectAllUsers())?></span></a>
+                    <a href="settings.php" class="list-group-item"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Settings </a>
                 </div>
             </div>
             <div class="col-md-5">
@@ -71,7 +71,11 @@ if(isset($_GET['id'])){
                                     </tr>
                                     ';
                             }
-//                            ?>
+                            ?>
                         </table>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+</section>
