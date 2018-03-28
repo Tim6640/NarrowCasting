@@ -9,25 +9,13 @@
 
 class User extends Crud
 {
-    //properties
-//    private $prop_userName;
-//    private $prop_userEmail;
-//    private $prop_userPassword;
-//    private $prop_userRole;
+    public function __construct()
+    {
+        $columns = array("*");
+        parent::__construct("user", $columns);
+    }
 
-    //constructor NIET NODIG WANT IK EXTEND DE PARENT NAAR DE CHILD IK HEB DE PARENT CONSTRUCTOR NODIG!
-//     public function __construct($table, $columns, $values)
-//     {
-//         $this->setPropTable($table);
-//         $this->setPropColumns($columns);
-//         $this->setPropValue($values);
-// //        $this->setPropUserName($userName);
-// //        $this->setPropUserEmail($userEmail);
-// //        $this->setPropUserPassword($userPassword);
-// //        $this->setPropUserRole($userRole);
-//     }
-
-    public function createUser()
+    public function createUser($role, $name, $password, $email)
     {
         $values = $this->getPropValue();
         $passwordHash = $values[2];
@@ -36,21 +24,19 @@ class User extends Crud
         $values[2] = $hashedPassword;
 
         $email = filter_var($emailCheck, FILTER_SANITIZE_EMAIL);
-//        var_dump($email);
 
-        $colums = array("userEmail");
-        $where="userEmail";
-        $whereConditions = $email;
-        $getUserEmail = new User("user", $colums, $where, $whereConditions);
-        $getUserEmail = $getUserEmail->getUsers();
+        $this->setPropColumns(array("userEmail"));
+        $this->setPropWhere("userEmail");
+        $this->setPropWhereConditions($email);
+        $getUserEmail = $this->selectFromTable();
 
-//        var_dump($getUserEmail);
 // Validate e-mail
         if (!$getUserEmail == $email) {
 
             echo "$email is not in our records.";
 
-            $this->setPropValue($values);
+            $this->setPropColumns(array("userRoleID", "userName", "userPassword", "userEmail"));
+            $this->setPropValue(array($role, $name, $hashedPassword, $email));
             $this->insertIntoTable();
 
             header( "refresh:5;url=index.php" );
@@ -63,20 +49,9 @@ class User extends Crud
             header( "refresh:5;url=index.php" );
              die();
         }
-
-//      var_dump($hashedPassword);
-//      var_dump($email);
-//      echo "<br>";
-//        var_dump($values);
-/*
-        if (password_verify('password', $hashedPassword)) {
-            echo '<br>Password is valid!';
-        } else {
-            echo 'Invalid password.';
-        }*/
     }
 
-    public function getUsers()
+    public function selectAllUsers()
     {
         return $this->selectFromTable();
     }

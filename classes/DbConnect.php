@@ -13,7 +13,7 @@ class DbConnect
 
     public function __construct()
     {
-        include_once "database/dbConfig.php";
+        include_once(__ROOT__."database/dbConfig.php");
         try
         {
             $this->objDb = new PDO("mysql:host=" . HOST . ";dbname=" . DATABASE, USER, PASSWORDDB);
