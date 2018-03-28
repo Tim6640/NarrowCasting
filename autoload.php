@@ -7,9 +7,9 @@
  * Time: 09:09
  */
 spl_autoload_register(function ($class){
-    $pathClasses = "classes/". $class . ".php";
-    $pathComponents = "components/" . $class . ".php";
-    $pathTemplateLoader = "templates/". $class . ".php";
+    $pathClasses = __ROOT__."classes\\". $class . ".php";
+    $pathComponents = __ROOT__."components\\" . $class . ".php";
+    $pathTemplateLoader = __ROOT__."templates\\". $class . ".php";
 
     if (file_exists($pathClasses)){
         require_once $pathClasses;

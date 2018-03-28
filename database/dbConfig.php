@@ -10,3 +10,6 @@ const HOST = "localhost";
 const DATABASE = "narrow_casting";
 const USER = "root";
 const PASSWORDDB = "";
+
+//narrow_casting db
+//Landstede password

@@ -86,62 +86,20 @@ class Device extends Crud
         return $mac;
     }
 
-    /**
-     * @param string $templateName
-     * binds the template to the device
-     */
-    public function bindTemplate($templateName)
-    {
-        //Should be INNER JOIN
-        $this->setPropTable("template");
-        $this->setPropColumns(array("templateID"));
-        $this->setPropWhere("templateName");
-        $this->setPropWhereConditions("$templateName");
-        $templateID = $this->selectFromTable();
-
-        if($templateID !== null){
-            $this->setPropTable("device_template_component");
-            $this->setPropColumns(array("templateID"));
-            $this->setPropWhere("deviceID");
-            $this->setPropWhereConditions($this->getPropDeviceID());
-            $this->setPropValue(array($templateID));
-            $this->updateIntoTable();
-        } else {
-            "new Exception()";
-        }
-    }
-
-    /**
-     * @param int $componentID
-     * @param string $componentParams
-     * binds the component with params to the device
-     */
-    public function bindComponent($componentName, $componentParams)
-    {
-        //Should be INNER JOIN
-        $this->setPropTable("component");
-        $this->setPropColumns(array("componentID"));
-        $this->setPropWhere("componentName");
-        $this->setPropWhereConditions("$componentName");
-        $componentID = $this->selectFromTable();
-
-        if($componentID !== null) {
-            $this->setPropTable("device_template_component");
-            $this->setPropColumns(array("componentID", "params"));
-            $this->setPropWhere("deviceID");
-            $this->setPropWhereConditions($this->getPropDeviceID());
-            $this->setPropValue(array($componentID, "$componentParams"));
-            $this->updateIntoTable();
-        } else {
-            "new Exception()";
-        }
-    }
-
     public function getDeviceConfig(){
         $this->setPropTable("device_template_component");
         $this->setPropColumns(array("*"));
         $this->setPropWhere("deviceID");
         $this->setPropWhereConditions($this->getPropDeviceID());
+        return $this->selectFromTable();
+    }
+
+    /**
+     * @return array all devices
+     */
+    public function selectAllDevices(){
+        $columns = array("*");
+        parent::__construct("device", $columns);
         return $this->selectFromTable();
     }
 
@@ -174,15 +132,6 @@ class Device extends Crud
     public function getDeviceComponentInfo($deviceID){
         $columns = array("*");
         parent::__construct("device_component", $columns, "deviceID", $deviceID);
-        return $this->selectFromTable();
-    }
-
-    /**
-     * @return array all devices
-     */
-    public function selectAllDevices(){
-        $columns = array("*");
-        parent::__construct("device", $columns);
         return $this->selectFromTable();
     }
 }
