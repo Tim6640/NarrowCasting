@@ -8,9 +8,7 @@
 $breadCrumb = basename(__FILE__, '.php');
 include_once("../includes/cmsHeader.php");
 
-$component = new Component();
 $template = new Template();
-$user = new User();
 $templates = $template->selectAllTemplates();
 $device = new Device();
 if(isset($_GET['id'])){
@@ -21,15 +19,7 @@ if(isset($_GET['id'])){
 <section id="main">
     <div class="container">
         <div class="row">
-            <div class="col-md-3">
-                <div class="list-group">
-                    <a href="dashboard.php" class="list-group-item active main-color-bg"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Dashboard</a>
-                    <a href="devices.php" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Devices <span class="badge"><?php echo count($device->selectAllDevices())?></span></a>
-                    <a href="components.php" class="list-group-item"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Components <span class="badge"><?php echo count($component->selectAllComponents())?></span></a>
-                    <a href="users.php" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Users <span class="badge"><?php echo count($user->selectAllUsers())?></span></a>
-                    <a href="settings.php" class="list-group-item"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Settings </a>
-                </div>
-            </div>
+            <?php include_once(__ROOT__."includes/cmsMenu.php") ?>
             <div class="col-md-5">
                 <div class="panel panel-default">
                     <div class="panel-heading" style="background-color:  #095f59;">

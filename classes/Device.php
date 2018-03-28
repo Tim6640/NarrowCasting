@@ -35,6 +35,9 @@ class Device extends Crud
         parent::__construct("device", $columns, "deviceMacAddress", $macAddress);
         $deviceInfo = $this->selectFromTable();
         @$this->prop_deviceID = $deviceInfo[0]['deviceID']; //the @ symbol prevents the error notice from displaying, this error should be resolved in future additions.
+        $this->setPropColumns(array("*"));
+        $this->setPropWhere("");
+        $this->setPropWhereConditions("");
     }
 
     /**
@@ -98,8 +101,6 @@ class Device extends Crud
      * @return array all devices
      */
     public function selectAllDevices(){
-        $columns = array("*");
-        parent::__construct("device", $columns);
         return $this->selectFromTable();
     }
 
