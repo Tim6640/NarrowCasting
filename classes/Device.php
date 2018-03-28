@@ -94,6 +94,15 @@ class Device extends Crud
         return $this->selectFromTable();
     }
 
+    /**
+     * @return array all devices
+     */
+    public function selectAllDevices(){
+        $columns = array("*");
+        parent::__construct("device", $columns);
+        return $this->selectFromTable();
+    }
+
     ///////////////////////////////////////////////////Still needs update
 
     /**
@@ -123,15 +132,6 @@ class Device extends Crud
     public function getDeviceComponentInfo($deviceID){
         $columns = array("*");
         parent::__construct("device_component", $columns, "deviceID", $deviceID);
-        return $this->selectFromTable();
-    }
-
-    /**
-     * @return array all devices
-     */
-    public function selectAllDevices(){
-        $columns = array("*");
-        parent::__construct("device", $columns);
         return $this->selectFromTable();
     }
 }
