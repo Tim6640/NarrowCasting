@@ -1,61 +1,56 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: Joey
+ * User: Christian
  * Date: 22/02/2018
  * Time: 15:08
  */
 
-class Login
+class Login extends Crud
 {
-    //properties.
-    private $_email;
-    private $_password;
 
-    //Constructor.
-    public function __construct($email, $password){
-
-        $this->setUsername($email);
-        $this->setPassword($password);
-
-    }
-
-    //Setters.
-    public function setUsername($email){
-
-        $this->_email = $email;
-
-    }
-
-    public function setPassword($password){
-
-        $this->_password = $password;
-
-    }
-
-    //Getters.
-    public function getUsername(){
-
-        return $this->_email;
-
-    }
-
-    public function getPassword(){
-
-        return $this->_password;
-
-    }
 
     //Method.
-    public function loginCustomer(){
+    public function loginVerification($userEmail, $userPassword)
+    {
+        $getUserInfo = $this->selectFromTable();
+        foreach ($getUserInfo as $item)
+        {
+            $email = $item['userEmail'];
+            $password = $item['userPassword'];
+            $username = $item['userName'];
 
-        $connect = new PDO('mysql:host=localhost;dbname=narrowcasting', 'root' /*, $password*/);
-        $sql = $connect->prepare("");
-        $sql->bindParam(':email',$this->_email, PDO::PARAM_STR);
-        $sql->execute();
 
-        $row = $sql->fetchAll();
+        if($email == $userEmail)
+        {
+            $password = $password;
+            if (password_verify($userPassword, $password))
+            {
+                echo "<script> alert('correct'); </script>";
+                return array('username' => $username);
+            }
+            else
+            {
+                echo "<script> alert('Deze gegevens bestaan of kloppen niet.'); </script>";
+                return false;
+                die();
+            }
+        }
+            else
+            {
+                echo "<script> alert('Deze gegevens bestaan of kloppen niet.'); </script>";
+                return false;
+                die();
+            }
+        }
+        if($getUserInfo == NULL)
+        {
+            echo "<script> alert('Deze gegevens bestaan of kloppen niet.'); </script>";
+            return false;
+            die();
+        }
 
     }
+
 
 }
