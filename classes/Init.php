@@ -9,15 +9,15 @@ class Init extends Template
 {
     private $prop_templateID;
 
-    private $prop_componentID;
+    private $prop_component;
 
     private $prop_componentParams;
 
-    function __construct($templateID, $componentID, $componentParams)
+    function __construct($templateID, $component)
     {
         $this->prop_templateID = $templateID;
-        $this->prop_componentID = $componentID;
-        $this->prop_componentParams = (explode(',',$componentParams));
+        $this->prop_component = $component;
+        $this->prop_componentParams = (explode(',',$component[0]));
         parent::__construct();
     }
 
@@ -42,7 +42,7 @@ class Init extends Template
      */
     public function getPropComponentID()
     {
-        return $this->prop_componentID;
+        return $this->prop_component;
     }
 
     /**
@@ -50,7 +50,7 @@ class Init extends Template
      */
     public function setPropComponentID($prop_componentID)
     {
-        $this->prop_componentID = $prop_componentID;
+        $this->prop_component = $prop_componentID;
     }
 
     /**
@@ -86,7 +86,7 @@ class Init extends Template
         $this->setPropWhere("templateID");
         $this->setPropWhereConditions($templateID);
         $templateName = $this->selectFromTable();
-
+var_dump($this->getPropComponentID());
         switch ($templateName[0]['templateName']) {
             case "Fullscreen":
                 echo '
@@ -116,14 +116,14 @@ class Init extends Template
                 
                         <div id="L50" class="col-6">';
 
-                        $this->loadComponent($this->getPropComponentID(), $this->getPropComponentParams());
+//                        $this->loadComponent($this->getPropComponentID(), $this->getPropComponentParams());
                         echo '
                 
                         </div>
                 
                         <div id="R50" class="col-6">';
 
-                        $this->loadComponent($this->getPropComponentID(), $this->getPropComponentParams());
+//                        $this->loadComponent($this->getPropComponentID(), $this->getPropComponentParams());
                         echo '
                 
                         </div>

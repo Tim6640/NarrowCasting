@@ -5,6 +5,7 @@
  * Date: 7-3-2018
  * Time: 14:20
  */
+include_once("autoload.php");
 ?>
 <head>
 

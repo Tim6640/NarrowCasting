@@ -19,7 +19,6 @@ if (isset($_POST['logOut']))
     header("Location: login.php");
     die();
 }
-//include "includes/cmsMenu.php";
 //include "includes/header.php";
 
 /*$device = new device();
