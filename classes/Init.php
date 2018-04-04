@@ -81,7 +81,7 @@ class Init extends Template
         return $newComponent->view();
     }
 
-    private function loadTemplate($templateID){
+    public function loadTemplate($templateID){
         $this->setPropColumns(array("templateName"));
         $this->setPropWhere("templateID");
         $this->setPropWhereConditions($templateID);

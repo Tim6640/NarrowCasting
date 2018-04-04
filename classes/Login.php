@@ -5,12 +5,25 @@
  * Date: 22/02/2018
  * Time: 15:08
  */
-
+/**
+ * @Login
+ * This class extends Crud.
+ * It inheritance it's constructor, getters and setter and Public Methods.
+ */
 class Login extends Crud
 {
-
-
     //Method.
+/**
+     * @loginVerification
+     * This method checks if the login is valid. This information can be found in the instance.
+     * @example
+            $table = "user";
+            $colums = array("[COLUMN]");
+            $where="[WHERE]";
+            $whereConditions = $_POST[VALUES];
+            $loginVerification = new Login($table, $colums, "$where", $whereConditions, "", "");
+            $loginVerification = $loginVerification->loginVerification($_POST['userEmail'], $_POST['userPassword']);
+*/
     public function loginVerification($userEmail, $userPassword)
     {
         $getUserInfo = $this->selectFromTable();
@@ -21,33 +34,18 @@ class Login extends Crud
             $username = $item['userName'];
 
 
-        if($email == $userEmail)
-        {
-            $password = $password;
-            if (password_verify($userPassword, $password))
-            {
-                echo "<script> alert('correct'); </script>";
-                return array('username' => $username);
+        try {
+            if($email == $userEmail) {
+                $password = $password;
+                if (password_verify($userPassword, $password)) {
+                    echo "<script> alert('correct'); </script>";
+                    return array('username' => $username);
+                }
             }
-            else
-            {
-                echo "<script> alert('Deze gegevens bestaan of kloppen niet.'); </script>";
-                return false;
-                die();
+        } catch (Exception $e) {
+                echo 'Ingevulde gegevens kloppen of bestaan niet. ',  $e->getMessage(), "\n";
             }
-        }
-            else
-            {
-                echo "<script> alert('Deze gegevens bestaan of kloppen niet.'); </script>";
-                return false;
-                die();
-            }
-        }
-        if($getUserInfo == NULL)
-        {
-            echo "<script> alert('Deze gegevens bestaan of kloppen niet.'); </script>";
-            return false;
-            die();
+
         }
 
     }
