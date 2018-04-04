@@ -46,12 +46,12 @@ $loginVerification = $loginVerification->loginVerification($_POST['userEmail'], 
 <div class="container">
 
     <form method="POST">
-        <h2 class="form-signin-heading">Please sign in</h2>
-        <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="email" name="userEmail" class="form-control" placeholder="Email address" required="" autofocus=""><br>
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" name="userPassword" class="form-control" placeholder="Password" required=""><br>
-        <input type="submit" value="Submit" class="btn btn-lg btn-primary btn-block" name="sendVerification">
+        <h2 class="form-signin-heading">Log in beheerder</h2>
+        <label for="inputEmail" class="sr-only">Email adres</label>
+        <input type="email" name="userEmail" class="form-control" placeholder="Email@gmail.com" required="" autofocus=""><br>
+        <label for="inputPassword" class="sr-only">Wachtwoord</label>
+        <input type="password" name="userPassword" class="form-control" placeholder="*******" required=""><br>
+        <input type="submit" value="Log in" class="btn btn-lg btn-primary btn-block" name="sendVerification">
     </form>
 </div>
 
