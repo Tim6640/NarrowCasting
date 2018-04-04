@@ -6,7 +6,7 @@
  * Time: 09:40
  */
 $title = basename(__FILE__, '.php');
-include_once("config.php");
+
 include_once("autoload.php");
 include "includes/header.php";
 

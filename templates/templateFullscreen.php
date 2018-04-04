@@ -5,7 +5,7 @@
  * Date: 7-3-2018
  * Time: 14:11
  */
-
+include "../includes/header.php";
 $title = basename(__FILE__, '.php');
 
 ?>
