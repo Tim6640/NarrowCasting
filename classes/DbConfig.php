@@ -8,5 +8,5 @@
 
 const HOST = "localhost";
 const DATABASE = "narrow_casting";
-const USER = "cmakkinga";
-const PASSWORDDB = "Qwerty1234";
+const USER = "";
+const PASSWORDDB = "";
