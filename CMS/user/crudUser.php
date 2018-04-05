@@ -6,6 +6,13 @@
  * Time: 22:30
  */
 session_start();
+
+if(!isset($_SESSION['login']))
+{
+    header("Location: ../../pages/login.php");
+    die();
+}
+
 include_once("../../autoload.php");
 include_once("../../includes/header.php");
 
