@@ -9,4 +9,4 @@
 const HOST = "localhost";
 const DATABASE = "narrow_casting";
 const USER = "";
-const PASSWORDDB = "";
+const PASSWORDDB = "Qwerty1234";
