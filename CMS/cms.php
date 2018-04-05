@@ -6,6 +6,8 @@
  * Time: 11:37
  */
 session_start();
+$title = basename(__FILE__, '.php');
+include_once("../includes/header.php");
 include_once("../autoload.php");
 
 if(!isset($_SESSION['login']))
@@ -102,9 +104,9 @@ if(isset($_GET['id'])){
             <div class="col-md-3">
                 <div class="list-group">
                     <a href="cms.php" class="list-group-item active main-color-bg"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Dashboard <span class="badge">12</span></a>
-                    <a href="components.php" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Devices <span class="badge">25</span></a>
-                    <a href="users.php" class="list-group-item"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Components <span class="badge">126</span></a>
-                    <a href="user/crudUser.php" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Users <span class="badge">12</span></a>
+                    <a href="#" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Devices <span class="badge">25</span></a>
+                    <a href="#" class="list-group-item"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Components <span class="badge">126</span></a>
+                    <a href="user/crudUser.php" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Beheerders <span class="badge">12</span></a>
                     <a href="#" class="list-group-item"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Settings <span class="badge">12</span></a>
                 </div>
             </div>

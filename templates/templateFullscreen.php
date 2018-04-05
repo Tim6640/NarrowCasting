@@ -9,7 +9,13 @@ include "../includes/header.php";
 $title = basename(__FILE__, '.php');
 
 ?>
+!DOCTYPE HTML>
+<html>
 
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
 <div class="container-fluid">
 
     <div class="row">
@@ -38,6 +44,6 @@ $title = basename(__FILE__, '.php');
     </div>
 
 </div>
-
 </body>
+</html>
 
