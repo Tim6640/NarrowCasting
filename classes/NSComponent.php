@@ -7,7 +7,7 @@
  * last edited by user: jpleunis7297 on March 20th 2018.
  */
 
-//include "../includes/header.php";
+include "../includes/header.php";
 
 class NSComponent
 {
@@ -117,7 +117,7 @@ class NSComponent
 
                 <tr align='center' style='background-color: #FEF6E1;'>
                 
-                    <th>Ritnummer <i class='fas fa-hashtag'></i></th>
+                    <!--<th>Ritnummer <i class='fas fa-hashtag'></i></th>-->
                     
                     <th>Tijd <i class='far fa-clock'></i></th>
                     
@@ -125,7 +125,7 @@ class NSComponent
                     
                     <th>Trein <i class='fas fa-train'></i></th>
                                         
-                    <th>Vervoerder <i class='far fa-user'></i></th>
+                    <!--<th>Vervoerder <i class='far fa-user'></i></th>-->
                     
                     <th>Spoor <i class='fas fa-road'></i></th>
                 
@@ -151,7 +151,7 @@ class NSComponent
 
             $count++;
 
-            echo "<td>" . $NsItemArray[$count]->RitNummer . "</td>";
+//            echo "<td>" . $NsItemArray[$count]->RitNummer . "</td>";
 
             echo "<td>" . substr($NsItemArray[$count]->VertrekTijd, 11, -8) . "<br>";
 
@@ -167,7 +167,7 @@ class NSComponent
 
             echo "<td><img src='assets/img/ns-logo.png'/> " . $NsItemArray[$count]->TreinSoort . "</td>";
 
-            echo "<td>" . $NsItemArray[$count]->Vervoerder . "</td>";
+//            echo "<td>" . $NsItemArray[$count]->Vervoerder . "</td>";
 
             echo "<td>" . $NsItemArray[$count]->VertrekSpoor . "</td>";
 
@@ -183,11 +183,11 @@ class NSComponent
     }
 }
 
-/*$t = new NSComponent("http://webservices.ns.nl/ns-api-avt?station=Harderwijk", "tbeek6640@student.landstede.nl", "RspRrenSa25njpME8Rcc0slbpvS3RkUk4twK8bWL44vmIxiBU34_0w");
-$t->view();*/
+$t = new NSComponent("http://webservices.ns.nl/ns-api-avt?station=Harderwijk", "tbeek6640@student.landstede.nl", "RspRrenSa25njpME8Rcc0slbpvS3RkUk4twK8bWL44vmIxiBU34_0w");
+$t->view();
 
 
 ?>
 
-<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-<script defer src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.0.0/less.min.js"></script>-->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script defer src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.0.0/less.min.js"></script>
