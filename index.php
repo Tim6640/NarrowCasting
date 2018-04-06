@@ -8,7 +8,7 @@
 
 $title = basename(__FILE__, '.php');
 include_once("autoload.php");
-include_once ("includes/header.php");
+include_once ($_SERVER["DOCUMENT_ROOT"]."/includes/header.php");
 ?>
 
 
