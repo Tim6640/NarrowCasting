@@ -10,7 +10,7 @@ session_start();
 $title = basename(__FILE__, '.php');
 
 include_once ($_SERVER["DOCUMENT_ROOT"]."autoload.php");
-include_once ($_SERVER["DOCUMENT_ROOT"]."/includes/header.php");
+include_once ($_SERVER["DOCUMENT_ROOT"]."includes/header.php");
 
 if(isset($_SESSION['login']))
 {
@@ -30,7 +30,8 @@ $loginVerification = $loginVerification->loginVerification($_POST['userEmail'], 
     if ($loginVerification)
     {
         $_SESSION['login']=$loginVerification;
-        header("Location: ../CMS/cms.php");
+        header("Location: ");
+        $_SERVER["DOCUMENT_ROOT"]."CMS/cms.php";
         exit;
     }
     else
