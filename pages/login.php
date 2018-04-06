@@ -9,8 +9,8 @@
 session_start();
 $title = basename(__FILE__, '.php');
 
-include "../includes/header.php";
-include_once("../autoload.php");
+include_once ($_SERVER["DOCUMENT_ROOT"]."autoload.php");
+include_once ($_SERVER["DOCUMENT_ROOT"]."/includes/header.php");
 
 if(isset($_SESSION['login']))
 {

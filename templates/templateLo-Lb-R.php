@@ -8,7 +8,8 @@
 
 $title = basename(__FILE__, '.php');
 
-include "../includes/header.php";
+include_once ($_SERVER["DOCUMENT_ROOT"]."autoload.php");
+include_once ($_SERVER["DOCUMENT_ROOT"]."/includes/header.php");
 ?>
 
 <div class="container-fluid">
