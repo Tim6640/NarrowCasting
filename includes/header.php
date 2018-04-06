@@ -11,8 +11,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" href= <?php echo $_SERVER["DOCUMENT_ROOT"]."assets/img/favicon.ico"; ?> type="image/x-icon" />
-<!--    <link rel="stylesheet/less" type="text/css" href="--><!--">-->
+    <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon" />
     <style>
         <?php include $_SERVER["DOCUMENT_ROOT"]."/assets/less/style.less"; ?>
     </style>
@@ -27,7 +26,7 @@
 </head>
 <body>
 <div class="header-logo row">
-    <img src= <?php echo $_SERVER["DOCUMENT_ROOT"]."assets/img/Landstede_logo.png"; ?> alt="http://www.ondile.nl/magento/media/catalog/category/Landstede_logo_600x240px.png">
+    <img src="assets/img/Landstede_logo.png" alt="http://www.ondile.nl/magento/media/catalog/category/Landstede_logo_600x240px.png">
     <h1 style="margin-left: auto; margin-right: auto;" id="headerTime"></h1>
 </div>
 
