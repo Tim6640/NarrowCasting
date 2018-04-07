@@ -39,6 +39,7 @@ class Login extends Crud
                 $password = $password;
                 if (password_verify($userPassword, $password)) {
                     echo "<script> alert('correct'); </script>";
+                    header("Location: ../CMS/cms.php");
                     return array('username' => $username);
                 }
             }

@@ -26,7 +26,7 @@
 </head>
 <body>
 <div class="header-logo row">
-    <img src="assets/img/Landstede_logo.png" alt="http://www.ondile.nl/magento/media/catalog/category/Landstede_logo_600x240px.png">
+    <img src="../assets/img/Landstede_logo.png" alt="http://www.ondile.nl/magento/media/catalog/category/Landstede_logo_600x240px.png">
     <h1 style="margin-left: auto; margin-right: auto;" id="headerTime"></h1>
 </div>
 

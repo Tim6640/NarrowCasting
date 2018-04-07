@@ -30,8 +30,8 @@ $loginVerification = $loginVerification->loginVerification($_POST['userEmail'], 
     if ($loginVerification)
     {
         $_SESSION['login']=$loginVerification;
-//        header("Location: ");
-        $_SERVER["DOCUMENT_ROOT"]."CMS/cms.php";
+        header("Location: ../CMS/cms.php");
+//        $_SERVER["DOCUMENT_ROOT"]."CMS/cms.php";
         exit;
     }
     else
