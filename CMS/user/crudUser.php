@@ -13,7 +13,7 @@ if(!isset($_SESSION['login']))
     die();
 }
 
-include_once ($_SERVER["DOCUMENT_ROOT"]."autoload.php");
+include_once ($_SERVER["DOCUMENT_ROOT"]."/autoload.php");
 include_once ($_SERVER["DOCUMENT_ROOT"]."/includes/header.php");
 
 $colums = array("*");
