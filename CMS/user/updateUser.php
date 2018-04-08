@@ -6,7 +6,7 @@
  * Time: 11:45
  */
 
-include_once ($_SERVER["DOCUMENT_ROOT"]."autoload.php");
+include_once ($_SERVER["DOCUMENT_ROOT"]."/autoload.php");
 include_once ($_SERVER["DOCUMENT_ROOT"]."/includes/header.php");
 
 //$colums = array("userRoleID", "userName", "userPassword", "userEmail");
