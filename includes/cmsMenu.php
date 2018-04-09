@@ -31,6 +31,9 @@ switch ($active) {
     case("settings"):
         $settings = "active";
         break;
+    case("logOut"):
+        echo "<p>Welkom" . $username."<form method='POST'>    <input type='submit' value='Log uit' name='logOut'> </form> </p>";
+        break;
 }
 ?>
 <div class="col-md-3">
