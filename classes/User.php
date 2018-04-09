@@ -47,20 +47,19 @@ class User extends Crud
 // Validate e-mail
         if (!$getUserEmail == $email) {
 
-            echo "$email is not in our records and will be added.";
-
             $this->setPropValue($values);
             $this->insertIntoTable();
 
-            header( "refresh:7;url=crudUser.php" );
-            die();
+            echo '<script>alert("Beheerder toegevoegd.");</script>';
+            header( "crudUser.php" );
+
         }
         else {
 
-             echo "$email is already in our records." ;
+            echo '<script>alert("Beheerder bestaat al.");</script>';
 
-            header( "refresh:7;url=crudUser.php" );
-             die();
+            header( "crudUser.php" );
+
         }
     }
 /**
