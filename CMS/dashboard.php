@@ -10,7 +10,7 @@ $title = basename(__FILE__, '.php');
 $breadCrumb = basename(__FILE__, '.php');
 include_once ("../includes/cmsHeader.php");
 
-if(!isset($_SESSION['login']))
+if(!isset($username))
 {
     header("Location: ../pages/login.php");
     die();
