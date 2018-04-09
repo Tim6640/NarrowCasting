@@ -93,7 +93,7 @@ if(isset($_GET['id'])){
         <ol class="breadcrumb">
             <li class="active">Dashboard</li>
             <li><p>Welkom <?php echo $username; ?>  <form method="POST">    <input type="submit" value="Log uit" name="logOut"> </form> </p></li>
-        </ol>
+        </ol> 
     </div>
 </section>
 
