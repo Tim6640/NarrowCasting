@@ -48,7 +48,9 @@
         var element;
 
         element = document.getElementById("headerTime");
-        if (element) {
+        if (minute <= 9){
+            element.innerHTML = hour + ":0" + minute;
+        }else{
             element.innerHTML = hour + ":" + minute;
         }
     },1000)
