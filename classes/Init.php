@@ -86,7 +86,7 @@ class Init extends Template
         $this->setPropWhere("templateID");
         $this->setPropWhereConditions($templateID);
         $templateName = $this->selectFromTable();
-var_dump($this->getPropComponentID());
+
         switch ($templateName[0]['templateName']) {
             case "Fullscreen":
                 echo '
