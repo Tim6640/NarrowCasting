@@ -15,6 +15,7 @@ $devices = "";
 $components = "";
 $users = "";
 $settings = "";
+$username = $_SESSION['username'];
 switch ($active) {
     case("dashboard"):
         $dashboard = "active";
@@ -32,7 +33,7 @@ switch ($active) {
         $settings = "active";
         break;
     case("Logout"):
-        $username = "active";
+        $username;
         break;
 }
 ?>
