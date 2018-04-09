@@ -8,7 +8,7 @@
 session_start();
 $title = basename(__FILE__, '.php');
 $breadCrumb = basename(__FILE__, '.php');
-include_once ($_SERVER["DOCUMENT_ROOT"]."/includes/cmsHeader.php");
+include_once ("../includes/cmsHeader.php");
 
 if(!isset($_SESSION['login']))
 {
@@ -37,7 +37,7 @@ if(isset($_GET['id'])){
 <section id="main">
     <div class="container">
         <div class="row">
-            <?php include_once($_SERVER["DOCUMENT_ROOT"]."/includes/cmsMenu.php") ?>
+            <?php include_once(__ROOT__."/includes/cmsMenu.php") ?>
             <div class="col-md-5">
                 <div class="panel panel-default">
                     <div class="panel-heading" style="background-color:  #095f59;">
