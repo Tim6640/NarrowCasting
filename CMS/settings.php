@@ -9,6 +9,21 @@ $breadCrumb = basename(__FILE__, '.php');
 include_once("../includes/cmsHeader.php");
 $component = new Component();
 
+if(!isset($_SESSION['login']))
+{
+    header("Location: ../pages/login.php");
+    die();
+}
+
+$username = $_SESSION['login']['username'];
+
+if (isset($_POST['logOut']))
+{
+    session_destroy();
+    header("Location: ../pages/login.php");
+    die();
+}
+
 ?>
 
 <section id="main">
