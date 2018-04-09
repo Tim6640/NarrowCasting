@@ -13,6 +13,11 @@
 
 class User extends Crud
 {
+    public function __construct()
+    {
+        $columns = array("*");
+        parent::__construct("user", $columns);
+    }
 /**
      * @createUser
      * This method insert values into the given table and column. This information can be found in the instance.
