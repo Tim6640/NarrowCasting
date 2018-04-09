@@ -228,7 +228,7 @@ private $prop_value;
     $getAllUsers = $getAllUsers->selectFromTable();
   * SELECT $columms FROM `$table` WHERE $where = $whereConditions order by $orderBy;
 */
-    public function selectFromTable()
+    public function selectFromTable($joinArray = 0)
     {
         $table = $this->getPropTable();
         $columns = $this->getPropColumns();
@@ -248,6 +248,11 @@ private $prop_value;
                 $sql .= ", ";
             }
             $counter++;
+        }
+
+        if($joinArray !=0)
+        {
+
         }
 
         $sql .=" FROM $table ";

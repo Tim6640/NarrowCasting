@@ -47,14 +47,14 @@ class User extends Crud
             $this->setPropValue($values);
             $this->insertIntoTable();
 
-            header( "refresh:7;url=CMS/user/crudUser.php" );
+            header( "refresh:7;url=crudUser.php" );
             die();
         }
         else {
 
              echo "$email is already in our records." ;
 
-            header( "refresh:7;url=CMS/user/crudUser.php" );
+            header( "refresh:7;url=crudUser.php" );
              die();
         }
     }
@@ -93,7 +93,7 @@ class User extends Crud
 
         $this->setPropValue($values);
         $this->updateIntoTable();
-        header("Location: CMS/user/crudUser.php");
+        header("Location: crudUser.php");
         die();
     }
     /**

@@ -5,12 +5,10 @@
  * Date: 13-3-2018
  * Time: 11:45
  */
+$title = basename(__FILE__, '.php');
 
-function MyAutoload($strClass)  //autoloader die de classes laad
-{
-    require_once('classes/'.$strClass.'.php');
-}
-spl_autoload_register("MyAutoload");
+include_once ($_SERVER["DOCUMENT_ROOT"]."/autoload.php");
+include_once ($_SERVER["DOCUMENT_ROOT"]."/includes/header.php");
 
 //$colums = array("userRoleID", "userName", "userPassword", "userEmail");
 //$values = array("1", "Christian", "password", "hoi5@gmail.com");
@@ -30,35 +28,46 @@ if(isset($_GET['id']))
 if (isset($_POST['updateSend']))
 {
     $colums = array("userPassword");
-    $values = array($_POST['userPassWord']);
+    $values = array($_POST['passWord']);
     $where="userID";
     $whereConditions = $_GET['id'];
     $updateInto = new User("user", $colums, $where, $whereConditions, "", $values);
     $updateInto = $updateInto->updateUser();
 }
 ?>
-<h1>Update User</h1>
-<p>Fill in</p>
-        <form method="POST">
-              <?php
-              foreach ($readSpecific as $value) {
+<body>
+<div class="container">
+    <h1>Update User</h1>
+    <p>Fill in</p>
+            <form method="POST">
+                  <?php
+                  foreach ($readSpecific as $value) {
 
-                $valueUserName = $value['userName'];
-                $valuePassword = $value['userPassword'];
+                    $valueUserName = $value['userName'];
+                    $valuePassword = $value['userPassword'];
 
-                echo "
-                Username:<br>
-                <label for='username'>$valueUserName</label><br>
-                PassWord:<br>
-                <input type='password' name='userPassWord' required><br>
-                <input type='submit' value='Update' name='updateSend'>
-                ";
-                  }
-                ?>
-        </form>
-<form method="POST" action="../index.php">
-    <input type='submit' value='return to Index' name='returnIndex'>
-</form>
+                    echo "
+                    Username:<br>
+                    <label for='username'>$valueUserName</label><br>
+                    Oude wachtwoord:<br>
+                    <input type='password' name='oldPassWord' required><br>
+                            <label>Nieuw wachtwoord:</label><br>
+                            <input id=\"password\" type=\"password\" name=\"passWord\" placeholder=\"**********\" required><br>
+                            <label>Verifiëer nieuw wachtwoord:</label><br>
+                            <input id=\"confirm_password\" type=\"password\" name=\"passWordCheck\" placeholder=\"**********\" required><br>
+                            <span id='message'></span><br>
+                    <input type='submit' value='Update' name='updateSend'>
+                    ";
+                      }
+                    ?>
+            </form>
+    <form method="POST" action="crudUser.php">
+        <input type='submit' value='Terug naar het overzicht' name='returnView'>
+    </form>
+</div>
+
+</body>
+<script src="../../assets/js/passwordCheck.js"></script>
 <?php
 //var_dump($testUpdate);
 //
