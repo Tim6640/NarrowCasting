@@ -59,7 +59,7 @@ if (isset($_POST['deleteSend']))
 </head>
 <body>
 <div class="container-fluid">
-    <form method="POST" action="../cms.php">
+    <form method="POST" action="../dashboard.php">
         <input type='submit' value='Terug naar het CMS' name='returnCMS'>
     </form>
     <h1>Creëer een beheerder</h1>

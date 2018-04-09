@@ -18,4 +18,8 @@ class Component extends Crud
         $this->setPropWhereConditions($componentID);
         $this->selectFromTable();
     }
+
+    public function getComponents(){
+        return $this->selectFromTable();
+    }
 }
