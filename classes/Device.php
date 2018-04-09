@@ -97,7 +97,7 @@ class Device extends Crud
     /**
      * @return array all devices
      */
-    public function selectAllDevices(){
+    public function getDevices(){
         $columns = array("*");
         parent::__construct("device", $columns);
         return $this->selectFromTable();
