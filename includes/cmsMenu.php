@@ -31,6 +31,9 @@ switch ($active) {
     case("settings"):
         $settings = "active";
         break;
+    case("Logout"):
+        $username = "active";
+        break;
 }
 ?>
 <div class="col-md-3">
@@ -40,5 +43,6 @@ switch ($active) {
         <a href="components.php" class="list-group-item <?php echo $components ?>"><span class="glyphicon glyphicon-modal-window" aria-hidden="true"></span> Components <span class="badge"><?php echo count($component->getComponents())?></span></a>
         <a href="users.php" class="list-group-item <?php echo $users ?>"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Users <span class="badge"><?php echo count($user->getUsers())?></span></a>
         <a href="settings.php" class="list-group-item <?php echo $settings ?>"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Settings </a>
+        <a href="#" class="list-group-item"> <p>Welkom <?php echo $username; ?> </p> <form method="POST">    <input type="submit" value="Log uit" name="logOut"> </form>  </a>
     </div>
 </div>
