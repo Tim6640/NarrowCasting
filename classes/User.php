@@ -13,6 +13,11 @@
 
 class User extends Crud
 {
+    public function __construct()
+    {
+        $columns = array("*");
+        parent::__construct("user", $columns);
+    }
 /**
      * @createUser
      * This method insert values into the given table and column. This information can be found in the instance.
@@ -44,16 +49,17 @@ class User extends Crud
 
             $this->setPropValue($values);
             $this->insertIntoTable();
-
             echo '<script>alert("Beheerder toegevoegd.");</script>';
-            header( "crudUser.php" );
+            header( "Refresh:0; url=crudUser.php");
+            die();
 
         }
         else {
-
             echo '<script>alert("Beheerder bestaat al.");</script>';
+            header( "Refresh:0; url=crudUser.php");
 
-            header( "crudUser.php" );
+
+            die();
 
         }
     }
@@ -92,7 +98,10 @@ class User extends Crud
 
         $this->setPropValue($values);
         $this->updateIntoTable();
-        header("Location: crudUser.php");
+        echo '<script>alert("Het wachtwoord is veranderd.");
+            location="crudUser.php";
+        </script>';
+//        header("Location: crudUser.php");
         die();
     }
     /**

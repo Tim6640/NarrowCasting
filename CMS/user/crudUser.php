@@ -13,8 +13,8 @@ if(!isset($_SESSION['login']))
     die();
 }
 
-//include_once ($_SERVER["DOCUMENT_ROOT"]."/autoload.php");
-include_once("../../autoload.php");
+include_once ($_SERVER["DOCUMENT_ROOT"]."/autoload.php");
+//include_once("../../autoload.php");
 include_once ($_SERVER["DOCUMENT_ROOT"]."/includes/header.php");
 
 $colums = array("*");
@@ -31,7 +31,8 @@ if (isset($_POST['submitUser']))
         $values = array("2" ,$_POST['userName'], $_POST['passWord'], $_POST['email']);
         $newUser = new User("user", $colums, "", "", "", $values);
         $newUser = $newUser->createUser();
-//        die();
+        header( "crudUser.php" );
+        die();
     }
     else
         {
@@ -60,7 +61,7 @@ if (isset($_POST['deleteSend']))
 </head>
 <body>
 <div class="container-fluid">
-    <form method="POST" action="../cms.php">
+    <form method="POST" action="../dashboard.php">
         <input type='submit' value='Terug naar het CMS' name='returnCMS'>
     </form>
     <h1>Creëer een beheerder</h1>

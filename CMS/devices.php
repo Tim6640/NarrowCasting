@@ -22,7 +22,7 @@ $device = new Device();
                     </div>
                     <div class="panel-body">
                         <table class="table table-striped">
-                            <?php foreach($device->selectAllDevices() as $devices){
+                            <?php foreach($device->getDevices() as $devices){
                                 echo "
                                 <tr>
                                     <td><td><img src='../assets/img/screen.png' class='img-fluid float-left' style='height: 100px'></td></td>

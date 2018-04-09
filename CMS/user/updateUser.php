@@ -27,36 +27,50 @@ if(isset($_GET['id']))
 
 if (isset($_POST['updateSend']))
 {
-    $colums = array("userPassword");
-    $values = array($_POST['passWord']);
-    $where="userID";
-    $whereConditions = $_GET['id'];
-    $updateInto = new User("user", $colums, $where, $whereConditions, "", $values);
-    $updateInto = $updateInto->updateUser();
+    foreach ($readSpecific as $value) {
+
+        $valuePassword = $value['userPassword'];
+        $password = $_POST['oldPassWord'];
+    try{
+        if(password_verify($password, $valuePassword) && $_POST['passWord'] == $_POST['passWordCheck']) {
+            $colums = array("userPassword");
+            $values = array($_POST['passWord']);
+            $where = "userID";
+            $whereConditions = $_GET['id'];
+            $updateInto = new User("user", $colums, $where, $whereConditions, "", $values);
+            $updateInto = $updateInto->updateUser();
+        }
+        else
+            {
+                echo '<script>alert("Het oude wachtwoord klopt niet.");</script>';
+            }
+    }
+            catch(Exception $e)
+            {
+                echo '<script>alert("Het oude wachtwoord klopt niet.");</script>',  $e->getMessage(), "\n";
+            }
+    }
 }
 ?>
 <body>
 <div class="container">
-    <h1>Update User</h1>
-    <p>Fill in</p>
+    <h1>Verander wachtwoord beheerder</h1>
             <form method="POST">
                   <?php
                   foreach ($readSpecific as $value) {
 
                     $valueUserName = $value['userName'];
-                    $valuePassword = $value['userPassword'];
-
                     echo "
-                    Username:<br>
-                    <label for='username'>$valueUserName</label><br>
-                    Oude wachtwoord:<br>
-                    <input type='password' name='oldPassWord' required><br>
-                            <label>Nieuw wachtwoord:</label><br>
-                            <input id=\"password\" type=\"password\" name=\"passWord\" placeholder=\"**********\" required><br>
-                            <label>Verifiëer nieuw wachtwoord:</label><br>
-                            <input id=\"confirm_password\" type=\"password\" name=\"passWordCheck\" placeholder=\"**********\" required><br>
-                            <span id='message'></span><br>
-                    <input type='submit' value='Update' name='updateSend'>
+                    <label>Naam:</label><br>
+                    <label>$valueUserName</label><br>
+                    <label>Oude wachtwoord:</label><br>
+                        <input id='oldPassWord' type='password' name='oldPassWord' placeholder='**********'  required><br>
+                    <label>Nieuw wachtwoord:</label><br>
+                        <input id='password' type='password' name='passWord' placeholder='**********' required><br>
+                    <label>Verifiëer nieuw wachtwoord:</label><br>
+                        <input id='confirm_password'  type='password'  name='passWordCheck' placeholder='**********' required><br>
+                    <span id='message'></span><br>
+                        <input type='submit' value='Update' name='updateSend'>
                     ";
                       }
                     ?>

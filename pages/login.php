@@ -16,7 +16,7 @@ include_once ("../includes/header.php");
 
 if(isset($_SESSION['login']))
 {
-    header("Location: ../CMS/cms.php");
+    header("Location: ../CMS/dashboard.php");
     exit;
 }
 
