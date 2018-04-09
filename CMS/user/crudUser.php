@@ -24,7 +24,7 @@ $getAllUsers = $getAllUsers->getUsers();
 
 if (isset($_POST['submitUser']))
 {
-    if ($_POST['passWord'] === $_POST['passWordCheck'])
+    if ($_POST['passWord'] == $_POST['passWordCheck'])
     {
         $colums = array("userRoleID", "userName", "userPassword", "userEmail");
         $values = array("2" ,$_POST['userName'], $_POST['passWord'], $_POST['email']);

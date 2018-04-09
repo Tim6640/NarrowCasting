@@ -5,6 +5,7 @@
  * Date: 13-3-2018
  * Time: 11:45
  */
+$title = basename(__FILE__, '.php');
 
 include_once ($_SERVER["DOCUMENT_ROOT"]."/autoload.php");
 include_once ($_SERVER["DOCUMENT_ROOT"]."/includes/header.php");
