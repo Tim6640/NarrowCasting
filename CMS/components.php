@@ -9,7 +9,7 @@ $breadCrumb = basename(__FILE__, '.php');
 include_once("../includes/cmsHeader.php");
 $component = new Component();
 
-if(!isset($_SESSION['login']))
+if(!isset($username)) //$_SESSION['login']
 {
     header("Location: ../pages/login.php");
     die();
