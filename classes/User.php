@@ -5,38 +5,33 @@
  * Date: 13-3-2018
  * Time: 09:29
  */
-
+/**
+ * @User
+ * This class extends Crud.
+ * It inheritance it's constructor, getters and setter and Public Methods.
+ */
 
 class User extends Crud
 {
-    //properties
-//    private $prop_userName;
-//    private $prop_userEmail;
-//    private $prop_userPassword;
-//    private $prop_userRole;
-
-    //constructor NIET NODIG WANT IK EXTEND DE PARENT NAAR DE CHILD IK HEB DE PARENT CONSTRUCTOR NODIG!
-//     public function __construct($table, $columns, $values)
-//     {
-//         $this->setPropTable($table);
-//         $this->setPropColumns($columns);
-//         $this->setPropValue($values);
-// //        $this->setPropUserName($userName);
-// //        $this->setPropUserEmail($userEmail);
-// //        $this->setPropUserPassword($userPassword);
-// //        $this->setPropUserRole($userRole);
-//     }
-
+/**
+     * @createUser
+     * This method insert values into the given table and column. This information can be found in the instance.
+     * @example
+     *  $table = "[TABLE]"
+        $colums = array("[VALUES]", "[VALUES]");
+        $values = array($_POST[VALUES] ,$_POST[VALUES], $_POST[VALUES], $_POST[VALUES]);
+        $newUser = new User($table, $colums, "", "", "", $values);
+        $newUser = $newUser->createUser();
+*/
     public function createUser()
     {
-        $values = $this->getPropValue();
-        $passwordHash = $values[2];
-        $emailCheck = $values[3];
-        $hashedPassword = password_hash($passwordHash, PASSWORD_BCRYPT);
-        $values[2] = $hashedPassword;
+        $values = $this->getPropValue(); //get all the values
+        $passwordHash = $values[2]; //put value 3 into the var
+        $emailCheck = $values[3]; //put value 4 into the var
+        $hashedPassword = password_hash($passwordHash, PASSWORD_BCRYPT); //hash the password
+        $values[2] = $hashedPassword; //values 2 is the hashed password
 
-        $email = filter_var($emailCheck, FILTER_SANITIZE_EMAIL);
-//        var_dump($email);
+        $email = filter_var($emailCheck, FILTER_SANITIZE_EMAIL); //this cleans the email
 
         $colums = array("userEmail");
         $where="userEmail";
@@ -44,60 +39,74 @@ class User extends Crud
         $getUserEmail = new User("user", $colums, $where, $whereConditions);
         $getUserEmail = $getUserEmail->getUsers();
 
-//        var_dump($getUserEmail);
 // Validate e-mail
         if (!$getUserEmail == $email) {
 
-            echo "$email is not in our records.";
+            echo "$email is not in our records and will be added.";
 
             $this->setPropValue($values);
             $this->insertIntoTable();
 
-            header( "refresh:5;url=index.php" );
+            header( "refresh:7;url=crudUser.php" );
             die();
         }
         else {
 
              echo "$email is already in our records." ;
 
-            header( "refresh:5;url=index.php" );
+            header( "refresh:7;url=crudUser.php" );
              die();
         }
-
-//      var_dump($hashedPassword);
-//      var_dump($email);
-//      echo "<br>";
-//        var_dump($values);
-/*
-        if (password_verify('password', $hashedPassword)) {
-            echo '<br>Password is valid!';
-        } else {
-            echo 'Invalid password.';
-        }*/
     }
-
+/**
+     * @getUser
+     * This method selects data from the given table and column. This information can be found in the instance.
+     * @example
+     * $table = "[TABLE]"
+    $colums = array("[COLUMNS]", "[COLUMNS]");
+    $getAllUsers = new User($table, $colums);
+    $getAllUsers = $getAllUsers->selectFromTable();
+    $getAllUsers = $getAllUsers->getUsers();
+*/
     public function getUsers()
     {
         return $this->selectFromTable();
     }
-
+/**
+     * @updateUser
+     * This method updates data from the given value. This information can be found in the instance.
+     * @example
+     *  $table = "[TABLE]"
+        $colums = array("[COLUMNS]");
+        $values = array($_POST[VALUES]);
+        $where="[WHERE]";
+        $whereConditions = $_GET[VALUES];
+        $updateInto = new User($table, $colums, $where, $whereConditions, "", $values);
+        $updateInto = $updateInto->updateUser();
+*/
     public function updateUser()
     {
         $values = $this->getPropValue();
         $passwordHash = $values[0];
         $hashedPassword = password_hash($passwordHash, PASSWORD_BCRYPT);
         $values[0] = $hashedPassword;
-//        if (password_verify('123', $hashedPassword)) {
-//            echo '<br>Password is valid!';
-//        } else {
-//            echo 'Invalid password.';
-//        }
+
         $this->setPropValue($values);
         $this->updateIntoTable();
-        header("Location: index.php");
+        header("Location: crudUser.php");
         die();
     }
-
+    /**
+     * @deleteUser
+     * This method deletes data from the given table, where and whereCondition. This information can be found in the instance.
+     * @example
+     *  $table = "[TABLE]"
+        $colums = array("[COLUMN]");
+        $where="[VALUES]";
+        $whereConditions = $_GET[VALUES];
+        $deleteUser = new User($table, $colums, "$where", "$whereConditions", "", "");
+        $deleteUser = $deleteUser->deleteUser();
+     */
     public function deleteUser()
     {
         $this->deleteFromTable();

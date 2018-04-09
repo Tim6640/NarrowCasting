@@ -1,61 +1,55 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: Joey
+ * User: Christian
  * Date: 22/02/2018
  * Time: 15:08
  */
-
-class Login
+/**
+ * @Login
+ * This class extends Crud.
+ * It inheritance it's constructor, getters and setter and Public Methods.
+ */
+class Login extends Crud
 {
-    //properties.
-    private $_email;
-    private $_password;
-
-    //Constructor.
-    public function __construct($email, $password){
-
-        $this->setUsername($email);
-        $this->setPassword($password);
-
-    }
-
-    //Setters.
-    public function setUsername($email){
-
-        $this->_email = $email;
-
-    }
-
-    public function setPassword($password){
-
-        $this->_password = $password;
-
-    }
-
-    //Getters.
-    public function getUsername(){
-
-        return $this->_email;
-
-    }
-
-    public function getPassword(){
-
-        return $this->_password;
-
-    }
-
     //Method.
-    public function loginCustomer(){
+/**
+     * @loginVerification
+     * This method checks if the login is valid. This information can be found in the instance.
+     * @example
+            $table = "user";
+            $colums = array("[COLUMN]");
+            $where="[WHERE]";
+            $whereConditions = $_POST[VALUES];
+            $loginVerification = new Login($table, $colums, "$where", $whereConditions, "", "");
+            $loginVerification = $loginVerification->loginVerification($_POST['userEmail'], $_POST['userPassword']);
+*/
+    public function loginVerification($userEmail, $userPassword)
+    {
+        $getUserInfo = $this->selectFromTable();
+        foreach ($getUserInfo as $item)
+        {
+            $email = $item['userEmail'];
+            $password = $item['userPassword'];
+            $username = $item['userName'];
 
-        $connect = new PDO('mysql:host=localhost;dbname=narrowcasting', 'root' /*, $password*/);
-        $sql = $connect->prepare("");
-        $sql->bindParam(':email',$this->_email, PDO::PARAM_STR);
-        $sql->execute();
 
-        $row = $sql->fetchAll();
+        try {
+            if($email == $userEmail) {
+                $password = $password;
+                if (password_verify($userPassword, $password)) {
+                    echo "<script> alert('correct'); </script>";
+                    header("Location: ../CMS/cms.php");
+                    return array('username' => $username);
+                }
+            }
+        } catch (Exception $e) {
+                echo 'Ingevulde gegevens kloppen of bestaan niet. ',  $e->getMessage(), "\n";
+            }
+
+        }
 
     }
+
 
 }

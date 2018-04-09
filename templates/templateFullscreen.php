@@ -5,11 +5,18 @@
  * Date: 7-3-2018
  * Time: 14:11
  */
-
+include_once ($_SERVER["DOCUMENT_ROOT"]."autoload.php");
+include_once ($_SERVER["DOCUMENT_ROOT"]."/includes/header.php");
 $title = basename(__FILE__, '.php');
 
 ?>
+!DOCTYPE HTML>
+<html>
 
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
 <div class="container-fluid">
 
     <div class="row">
@@ -38,6 +45,6 @@ $title = basename(__FILE__, '.php');
     </div>
 
 </div>
-
 </body>
+</html>
 

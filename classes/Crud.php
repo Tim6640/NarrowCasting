@@ -20,7 +20,15 @@ class Crud extends DbConnect
      */
 
 //properties
-
+    /**
+     * Properties of the SQL code.
+     * Table of the DataBase
+     * Column of the Table
+     * Where a column = ?
+     * WhereCondition is the place of the ?
+     * orderBy default is ascending
+     * Value is the given values.
+     */
 private $prop_table;
 private $prop_columns;
 private $prop_where;
@@ -30,7 +38,9 @@ private $prop_value;
 
 //constructor
     /**
-     *  @param
+     * @construct
+     * The constructor get the values from the instance. These values are set to a property.
+     * Where,WhereConditions,Orderby and value are by default empty.
      */
    public function __construct($table, $columns, $where='', $whereConditions='', $orderBy='', $value='')
     {
@@ -143,14 +153,21 @@ private $prop_value;
         $this->prop_value = $prop_value;
     }
 
-
-
-
 //methods
-
+/**
+     * @insertIntoTable
+     * This method insert values into the given table and column. This information can be found in the instance.
+     * @example
+     *  $table = "[TABLE]"
+        $colums = array("[COLUMNS]", "[COLUMNS]");
+        $values = array("[VALUES]",$_POST[VALUES], $_POST[VALUES], $_POST[VALUES]);
+        $insertInto = new Crud($table, $colums, "", "", "", $values);
+        $insertInto = $insertInto->insertIntoTable();
+     * INSERT INTO $table ($columns,) VALUES ('')
+*/
     public function insertIntoTable()
 {
-//  INSERT INTO $table ($columns,) VALUES ('')
+
     $table = $this->getPropTable();
     $columns = $this->getPropColumns();
     $values = $this->getPropValue();
@@ -191,17 +208,9 @@ private $prop_value;
     }
 
     $sql .= ")";
-/*        $passwordHash = $values[2];
-        //moet maar 1 item(password) manipuleren/veranderen de rest moet hetzelfde blijven
-        $hashedPassword = password_hash($passwordHash, PASSWORD_BCRYPT);
-        $values[2] = $hashedPassword;*/
     //extends makes it possible to get to the connect methode within DbConnect.php.
     $query = $this->connect()->prepare($sql);
 
-        // $db = new DbConnect();
-        // $db = $db->connect();
-        //
-        // $query = $db->prepare($sql);
     //looping through the foreach and getting the index from the columns. (the index numbers!) the $values will be binded to a certain Index number.
     foreach($columns as $columnIndex => $column) {
         $query->bindParam(":".$column , $values[$columnIndex]);
@@ -209,9 +218,18 @@ private $prop_value;
 
     $query-> execute();
 }
-    public function selectFromTable()
+/**
+  * @selectFromTable
+  * This method selects data from the given table and column. This information can be found in the instance.
+  * @example
+  * $table = "[TABLE]"
+    $colums = array("[COLUMNS]", "[COLUMNS]");
+    $getAllUsers = new Crud($table, $colums);
+    $getAllUsers = $getAllUsers->selectFromTable();
+  * SELECT $columms FROM `$table` WHERE $where = $whereConditions order by $orderBy;
+*/
+    public function selectFromTable($joinArray = 0)
     {
-        //SELECT $columms FROM `$table` WHERE $where = $whereConditions order by $orderBy;
         $table = $this->getPropTable();
         $columns = $this->getPropColumns();
         $where = $this->getPropWhere();
@@ -230,6 +248,11 @@ private $prop_value;
                 $sql .= ", ";
             }
             $counter++;
+        }
+
+        if($joinArray !=0)
+        {
+
         }
 
         $sql .=" FROM $table ";
@@ -251,10 +274,23 @@ private $prop_value;
         $result = $query->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
+/**
+     * @updateIntoTable
+     * This method updates data from the given value. This information can be found in the instance.
+     * @example
+     *      $table = "[TABLE]";
+            $colums = array("[COLUMNS]");
+            $values = array($_POST[VALUES]);
+            $where="[WHERE]";
+            $whereConditions = $_GET[VALUES];
+            $updateInto = new Crud($table, $colums, $where, $whereConditions, "", $values);
+            $updateInto = $updateInto->updateIntoTable();
+     *      UPDATE $table SET $columns = :$columns  WHERE $column = :id
+            bindparam :$columns, $values[];
+*/
     public function updateIntoTable()
     {
-        //UPDATE $table SET $columns = :$columns  WHERE $column = :id
-        //bindparam :$columns, $values[];
+
         $table = $this->getPropTable();
         $columns = $this->getPropColumns();
         $newValues = $this->getPropValue();
@@ -290,9 +326,21 @@ private $prop_value;
         $query->bindParam(":".$whereConditions , $whereConditions);
         $query-> execute();
     }
+/**
+     * @deleteFromTable
+     * This method deletes data from the given table, where and whereCondition. This information can be found in the instance.
+     * @example
+     *      $table = "[TABLE]";
+            $colums = array("[COLUMN]");
+            $where="[VALUES]";
+            $whereConditions = $_GET[VALUES];
+            $deleteUser = new User($table, $colums, "$where", "$whereConditions", "", "");
+            $deleteUser = $deleteUser->deleteFromTable();
+     *      DELETE FROM $table WHERE $column = :id
+*/
     public function deleteFromTable()
     {
-      //DELETE FROM $table WHERE $column = :id
+
       $table = $this->getPropTable();
       $columns = $this->getPropColumns();
       $whereConditions = $this->getPropWhereConditions();

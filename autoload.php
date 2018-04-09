@@ -6,7 +6,7 @@
  * Date: 6-3-2018
  * Time: 09:09
  */
-spl_autoload_register(function ($class){
+/*spl_autoload_register(function ($class){
     $pathClasses = "classes/". $class . ".php";
     $pathComponents = "components/" . $class . ".php";
     $pathTemplateLoader = "templates/". $class . ".php";
@@ -16,4 +16,11 @@ spl_autoload_register(function ($class){
     } elseif (file_exists($pathComponents)){
         require_once $pathComponents;
     }
-});
+});*/
+
+function loadClasses($strClass)
+{
+    require_once('classes/'.$strClass.'.php');
+}
+spl_autoload_register("loadClasses");
+

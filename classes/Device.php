@@ -34,7 +34,7 @@ class Device extends Crud
         $macAddress = $this->deviceMacAddress();
         parent::__construct("device", $columns, "deviceMacAddress", $macAddress);
         $deviceInfo = $this->selectFromTable();
-        $this->prop_deviceID = $deviceInfo[0]['deviceID'];
+        @$this->prop_deviceID = $deviceInfo[0]['deviceID']; //the @ symbol prevents the error notice from displaying, this error should be resolved in future additions.
     }
 
     /**
@@ -94,6 +94,15 @@ class Device extends Crud
         return $this->selectFromTable();
     }
 
+    /**
+     * @return array all devices
+     */
+    public function selectAllDevices(){
+        $columns = array("*");
+        parent::__construct("device", $columns);
+        return $this->selectFromTable();
+    }
+
     ///////////////////////////////////////////////////Still needs update
 
     /**
@@ -123,15 +132,6 @@ class Device extends Crud
     public function getDeviceComponentInfo($deviceID){
         $columns = array("*");
         parent::__construct("device_component", $columns, "deviceID", $deviceID);
-        return $this->selectFromTable();
-    }
-
-    /**
-     * @return array all devices
-     */
-    public function selectAllDevices(){
-        $columns = array("*");
-        parent::__construct("device", $columns);
         return $this->selectFromTable();
     }
 }

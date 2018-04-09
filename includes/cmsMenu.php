@@ -5,17 +5,19 @@
  * Date: 16-3-2018
  * Time: 12:07
  */
-?>
-<body>
-    <?php
-    include_once("autoload.php");
+
+include_once ($_SERVER["DOCUMENT_ROOT"]."autoload.php");
+include_once ($_SERVER["DOCUMENT_ROOT"]."/includes/header.php");
 
     $device = new device();
+
     foreach ($device->selectAllDevices() as $deviceInfo){
-        echo "<a href='cms.php?id=".$deviceInfo['deviceID']."'>".$deviceInfo['deviceName']."</a>";
+
+        echo "<li><i class='fas fa-caret-right'></i>  <a href='cmsOld.php?id=".$deviceInfo['deviceID']."'>".$deviceInfo['deviceName']."</a></li>";
+
         echo "<br>";
+
     }
+
     ?>
 
-    <button>Settings</button>
-</body>
