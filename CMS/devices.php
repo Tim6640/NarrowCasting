@@ -41,9 +41,9 @@ if (isset($_POST['logOut']))
                                 echo "
                                 <tr>
                                     <td><td><img src='../assets/img/screen.png' class='img-fluid float-left' style='height: 100px'></td></td>
-                                    <td>Device name: ".$devices['deviceName']."<br>
-                                        Device address: ".$devices['deviceMacAddress']."<br>
-                                        Componentens active: <br>
+                                    <td>Naam apparaat: ".$devices['deviceName']."<br>
+                                        MAC-adres: ".$devices['deviceMacAddress']."<br>
+                                        Actieve componenten: <br>
                                     </td>
                                 </tr>";
                                 } ?>

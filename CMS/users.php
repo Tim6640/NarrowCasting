@@ -40,7 +40,7 @@ if (isset($_POST['logOut']))
                                 echo "
                                 <tr>
                                     <td><td><img src='../assets/img/user.png' class='img-fluid float-left' style='height: 100px'></td></td>
-                                    <td>Name: ".$users['userName']."<br>
+                                    <td>Naam Beheerder: ".$users['userName']."<br>
                                         E-mail: ".$users['userEmail']."<br>
                                     </td>
                                 </tr>";
