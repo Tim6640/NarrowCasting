@@ -8,7 +8,6 @@
 $breadCrumb = basename(__FILE__, '.php');
 include_once("../includes/cmsHeader.php");
 $user = new User();
-
 ?>
 
 <section id="main">
@@ -38,3 +37,4 @@ $user = new User();
         </div>
     </div>
 </section>
+</html>
