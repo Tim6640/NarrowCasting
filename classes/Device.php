@@ -86,7 +86,8 @@ class Device extends Crud
         return $mac;
     }
 
-    public function getDeviceConfig(){
+    public function getDeviceConfig()
+    {
         $this->setPropTable("device_template_component");
         $this->setPropColumns(array("*"));
         $this->setPropWhere("deviceID");
@@ -124,14 +125,5 @@ class Device extends Crud
         $columns = array("deviceName");
         parent::__construct("device", $columns,"deviceID", $this->getPropDeviceID(),"", $deviceName);
         return $this->updateIntoTable();
-    }
-
-    /**
-     * @return array device component info
-     */
-    public function getDeviceComponentInfo($deviceID){
-        $columns = array("*");
-        parent::__construct("device_component", $columns, "deviceID", $deviceID);
-        return $this->selectFromTable();
     }
 }

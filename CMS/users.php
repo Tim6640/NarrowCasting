@@ -9,14 +9,11 @@
 $breadCrumb = basename(__FILE__, '.php');
 include_once("../includes/cmsHeader.php");
 $user = new User();
-
 if(!isset($_SESSION['login']))
 {
     header("Location: ../pages/login.php");
     die();
 }
-
-$username = $_SESSION['login']['username'];
 
 if (isset($_POST['logOut']))
 {
@@ -55,3 +52,4 @@ if (isset($_POST['logOut']))
         </div>
     </div>
 </section>
+</html>
