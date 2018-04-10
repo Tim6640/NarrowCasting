@@ -5,6 +5,7 @@
  * Date: 28-3-2018
  * Time: 10:44
  */
+session_start();
 include_once ($_SERVER["DOCUMENT_ROOT"]."/autoload.php");
 define('__ROOT__', $_SERVER["DOCUMENT_ROOT"]. '/');
 ?>
