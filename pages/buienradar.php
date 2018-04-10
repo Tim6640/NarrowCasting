@@ -6,7 +6,7 @@
  * Time: 09:28
  */
 $title = basename(__FILE__, '.php');
-include_once ($_SERVER["DOCUMENT_ROOT"]."autoload.php");
+include_once ($_SERVER["DOCUMENT_ROOT"]."/autoload.php");
 include_once ($_SERVER["DOCUMENT_ROOT"]."/includes/header.php");
 
 
@@ -18,7 +18,7 @@ include_once ($_SERVER["DOCUMENT_ROOT"]."/includes/header.php");
 <body>
 <div>
 <?php
-    $radar = new Buienradar("","","","", "","","","","","");
+    $radar = new Buienradar();
     $radar = $radar->view();
 ?>
 </div>

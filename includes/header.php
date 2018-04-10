@@ -8,7 +8,7 @@
 //header('Content-Type: image/png');
 //$pathLess = $_SERVER["DOCUMENT_ROOT"]."/assets/less/style.less";
 //echo "<img src='http://localhost/assets/img/Landstede_logo.png' alt='no img'/>"
-
+define('__ROOT__', $_SERVER["DOCUMENT_ROOT"]. '/');
 
 
 ?>
