@@ -6,7 +6,7 @@
  * Time: 14:29
  */
 //session_start();
-$breadCrumb = "Aapparaten";
+$breadCrumb = "Apparaten";
 include_once("../includes/cmsHeader.php");
 $device = new Device();
 
