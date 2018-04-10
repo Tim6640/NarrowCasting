@@ -5,7 +5,7 @@
  * Date: 22-3-2018
  * Time: 11:37
  */
-session_start();
+//session_start();
 $title = basename(__FILE__, '.php');
 $breadCrumb = basename(__FILE__, '.php');
 include_once ("../includes/cmsHeader.php");
