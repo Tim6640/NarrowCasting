@@ -7,7 +7,7 @@
  */
 //session_start();
 $title = "Dashboard";
-$breadCrumb = basename(__FILE__, '.php');
+$breadCrumb = "Dashboard"; //basename(__FILE__, '.php');
 include_once ("../includes/cmsHeader.php");
 
 if(!isset($_SESSION['login']))

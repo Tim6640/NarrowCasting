@@ -33,7 +33,7 @@ if (isset($_POST['logOut']))
                 <div class="panel panel-default">
                     <div class="panel-heading" style="background-color:  #095f59;">
                         <button class="btn-add-component"><i class="fas fa-plus"></i> Voeg component toe.</button>
-                        <h3 class="panel-title"><span class="glyphicon glyphicon-link" aria-hidden="true"></span> Componenten</h3>
+                        <h3 class="panel-title"><i class="fa fa-puzzle-piece"></i> Componenten</h3>
                     </div>
                     <div class="panel-body">
                         <table class="table table-striped">
@@ -42,7 +42,7 @@ if (isset($_POST['logOut']))
                                 <tr>
                                     <td><td><img src='../assets/img/Microcontrolller-01-512.png' class='img-fluid float-left' style='height: 100px'></td></td>
                                     <td>
-                                        Component name: ".$components['componentName']."<br>
+                                        Naam: ".$components['componentName']."<br>
                                         Status: ".$components['componentActive']."
                                     </td>
                                 </tr>";
