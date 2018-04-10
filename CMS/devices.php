@@ -35,7 +35,7 @@ if (isset($_POST['logOut']))
                 <div class="panel panel-default">
                     <div class="panel-heading" style="background-color:  #095f59;">
                         <button class="btn-add-screen"><i class="fas fa-plus"></i> Koppel nieuw scherm.</button>
-                        <h3 class="panel-title"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Devices</h3>
+                        <h3 class="panel-title"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Apparaten</h3>
                     </div>
                     <div class="panel-body">
                         <table class="table table-striped">
