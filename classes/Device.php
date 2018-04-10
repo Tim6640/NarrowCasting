@@ -98,23 +98,25 @@ class Device extends Crud
      * @return array all devices
      */
     public function getDevices(){
-        $columns = array("*");
-        parent::__construct("device", $columns);
+        $this->setPropTable("device");
+        $this->setPropColumns(array("*"));
         return $this->selectFromTable();
     }
-
-    ///////////////////////////////////////////////////Still needs update
 
     /**
      * @param string $deviceName
      * creates a new device
      */
     public function createDevice($deviceName){
-        $columns = array("deviceName", "deviceDescription");
+        $columns = array("deviceName", "deviceMacAddress");
         $values = array($deviceName, $this->getPropMacAddress());
-        parent::__construct("device", $columns,"","", "", $values);
+        $this->setPropTable("device");
+        $this->setPropColumns($columns);
+        $this->setPropValue($values);
         $this->insertIntoTable();
     }
+
+    ///////////////////////////////////////////////////Still needs update
 
     /**
      * @param string $deviceName
