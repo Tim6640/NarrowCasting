@@ -41,7 +41,7 @@ if(isset($_GET['id'])){
             <div class="col-md-5">
                 <div class="panel panel-default">
                     <div class="panel-heading" style="background-color:  #095f59;">
-                        <h3 class="panel-title"><span class="glyphicon glyphicon-facetime-video" aria-hidden="true"></span> Devices</h3>
+                        <h3 class="panel-title"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Devices</h3>
                     </div>
                     <div class="panel-body">
                         <?php
@@ -49,10 +49,10 @@ if(isset($_GET['id'])){
                         {
                             $device->setPropWhereConditions($devices['deviceID']);
                             $componentCount = count($device->getDeviceConfig());
-                            echo '<div class="col-md-3">
+                            echo '<div class="col-md-6">
                                       <div class="well dash-box">
-                                          <h2><span class="glyphicon glyphicon-facetime-video" aria-hidden="true"></span>'.$componentCount.'</h2>
-                                          <h4>'.$devices['deviceName'].'</h4>
+                                          <h2  style="text-align: center"><img src=\'../assets/img/screen.png\' class=\'img-fluid\' style=\'height:50px\'><br>'.$componentCount.'</h2>
+                                          <h4 style="text-align: center">'.$devices['deviceName'].'</h4>
                                       </div>
                                 </div>';
                         }
