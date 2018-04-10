@@ -33,7 +33,7 @@ define('__ROOT__', $_SERVER["DOCUMENT_ROOT"]. '/');
     <div class="container">
         <div class="row">
             <div class="col-md-10">
-                <h1><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> CMS <small>Manage Your Narrowcasting System</small></h1>
+                <h1><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> CMS <small>Beheer uw Narrowcasting systeem.</small></h1>
             </div>
         </div>
     </div>
