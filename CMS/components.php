@@ -42,7 +42,7 @@ if (isset($_POST['logOut']))
                                 <tr>
                                     <td><td><img src='../assets/img/Microcontrolller-01-512.png' class='img-fluid float-left' style='height: 100px'></td></td>
                                     <td>
-                                        Component name: ".$components['componentName']."<br>
+                                        Naam: ".$components['componentName']."<br>
                                         Status: ".$components['componentActive']."
                                     </td>
                                 </tr>";
