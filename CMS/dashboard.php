@@ -41,7 +41,7 @@ if(isset($_GET['id'])){
             <div class="col-md-5">
                 <div class="panel panel-default">
                     <div class="panel-heading" style="background-color:  #095f59;">
-                        <h3 class="panel-title"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Devices</h3>
+                        <h3 class="panel-title"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Apparaten</h3>
                     </div>
                     <div class="panel-body">
                         <?php
@@ -64,7 +64,7 @@ if(isset($_GET['id'])){
             <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading" style="background-color:  #095f59;">
-                        <h3 class="panel-title"><span class="glyphicon glyphicon-user"></span> Users</h3>
+                        <h3 class="panel-title"><span class="glyphicon glyphicon-user"></span> Beheerders</h3>
                     </div>
                     <div class="panel-body">
                         <table class="table table-striped">
