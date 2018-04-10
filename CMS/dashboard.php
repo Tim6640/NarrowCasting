@@ -6,7 +6,7 @@
  * Time: 11:37
  */
 //session_start();
-$title = basename(__FILE__, '.php');
+$title = "Dashboard";
 $breadCrumb = basename(__FILE__, '.php');
 include_once ("../includes/cmsHeader.php");
 
@@ -15,8 +15,6 @@ if(!isset($_SESSION['login']))
     header("Location: ../pages/login.php");
     die();
 }
-
-$username = $_SESSION['login']['username'];
 
 if (isset($_POST['logOut']))
 {

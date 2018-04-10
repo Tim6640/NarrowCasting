@@ -15,8 +15,6 @@ if(!isset($_SESSION['login']))
     die();
 }
 
-$username = $_SESSION['login']['username'];
-
 if (isset($_POST['logOut']))
 {
     session_destroy();

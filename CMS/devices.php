@@ -6,7 +6,7 @@
  * Time: 14:29
  */
 //session_start();
-$breadCrumb = basename(__FILE__, '.php');
+$breadCrumb = "Aapparaten";
 include_once("../includes/cmsHeader.php");
 $device = new Device();
 
@@ -15,8 +15,6 @@ if(!isset($_SESSION['login']))
     header("Location: ../pages/login.php");
     die();
 }
-
-$username = $_SESSION['login']['username'];
 
 if (isset($_POST['logOut']))
 {
