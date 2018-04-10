@@ -34,14 +34,15 @@ if (isset($_POST['logOut']))
             <div class="col-md-9">
                 <div class="panel panel-default">
                     <div class="panel-heading" style="background-color:  #095f59;">
-                        <h3 class="panel-title"><span class="glyphicon glyphicon-facetime-video" aria-hidden="true"></span> Users</h3>
+                        <button class="btn-add-admin"><i class="fas fa-plus"></i> Voeg Beheerder toe.</button>
+                        <h3 class="panel-title"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Beheerders</h3>
                     </div>
                     <div class="panel-body">
                         <table class="table table-striped">
                             <?php foreach($user->getUsers() as $users){
                                 echo "
                                 <tr>
-                                    <td><td><img src='../assets/img/screen.png' class='img-fluid float-left' style='height: 100px'></td></td>
+                                    <td><td><img src='../assets/img/user.png' class='img-fluid float-left' style='height: 100px'></td></td>
                                     <td>Name: ".$users['userName']."<br>
                                         E-mail: ".$users['userEmail']."<br>
                                     </td>
