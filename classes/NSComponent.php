@@ -109,7 +109,7 @@ class NSComponent
 
         echo "<div>";
 
-        echo "<table class='table table-striped'>";
+        echo "<table class='table table-striped ns-table'>";
         
         echo "<h3 style='color: #040156; font-weight: bold; font-size: 30px;'>Vertrektijden vanaf station Harderwijk.<i><img id='NSlogo' src='assets/img/ns_logo_1.png' /></i></h3>";
 

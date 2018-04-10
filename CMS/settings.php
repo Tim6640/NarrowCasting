@@ -34,7 +34,7 @@ if (isset($_POST['logOut']))
             <div class="col-md-9">
                 <div class="panel panel-default">
                     <div class="panel-heading" style="background-color:  #095f59;">
-                        <h3 class="panel-title"><span class="glyphicon glyphicon-facetime-video" aria-hidden="true"></span> Settings</h3>
+                        <h3 class="panel-title"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Settings</h3>
                     </div>
                     <div class="panel-body">
 <!--          Content              -->
