@@ -29,7 +29,7 @@ define('__ROOT__', $_SERVER["DOCUMENT_ROOT"]. '/');
 </head>
 
 <body>
-<header id="header">
+<header id="header" style="background-color: #333333; color: white;">
     <div class="container">
         <div class="row">
             <div class="col-md-10">
