@@ -5,6 +5,7 @@
  * Date: 27-3-2018
  * Time: 14:29
  */
+//session_start();
 $breadCrumb = basename(__FILE__, '.php');
 include_once("../includes/cmsHeader.php");
 $component = new Component();
