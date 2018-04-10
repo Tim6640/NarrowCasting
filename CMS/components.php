@@ -32,7 +32,8 @@ if (isset($_POST['logOut']))
             <div class="col-md-9">
                 <div class="panel panel-default">
                     <div class="panel-heading" style="background-color:  #095f59;">
-                        <h3 class="panel-title"><span class="glyphicon glyphicon-modal-window" aria-hidden="true"></span> Components</h3>
+                        <button class="btn-add-component"><i class="fas fa-plus"></i> Voeg component toe.</button>
+                        <h3 class="panel-title"><span class="glyphicon glyphicon-link" aria-hidden="true"></span> Componenten</h3>
                     </div>
                     <div class="panel-body">
                         <table class="table table-striped">
