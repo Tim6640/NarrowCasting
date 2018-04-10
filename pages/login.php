@@ -32,7 +32,7 @@ $loginVerification = $loginVerification->loginVerification($_POST['userEmail'], 
     if ($loginVerification)
     {
         $_SESSION['login']=$loginVerification;
-        header("Location: ../CMS/cms.php");
+        header("Location: ../CMS/dashboard.php");
 //        $_SERVER["DOCUMENT_ROOT"]."CMS/cms.php";
 //        exit;
     }
