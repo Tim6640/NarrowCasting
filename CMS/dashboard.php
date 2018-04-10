@@ -43,6 +43,8 @@ if(isset($_GET['id'])){
                     </div>
                     <div class="panel-body">
                         <?php
+                        $device->setPropWhere("");
+                        $device->setPropWhereConditions("");
                         foreach ($device->getDevices() as $devices)
                         {
                             $device->setPropWhereConditions($devices['deviceID']);
