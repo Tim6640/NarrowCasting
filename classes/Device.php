@@ -85,7 +85,7 @@ class Device extends Crud
 //        $mac = substr($mycom, ($pmac + 36), 17); // Get Physical Address
         $mac = $_SERVER['REMOTE_ADDR'];
 
-        return gethostbyaddr($_SERVER['REMOTE_ADDR']);
+        return php_uname('n');
     }
 
     public function getDeviceConfig()
