@@ -61,6 +61,8 @@ if(isset($_POST['submitDevice']))
                                 <th>Apparaat Naam</th>
                                 <th>MAC adres</th>
                                 <th>Componenten actief</th>
+                                <th></th>
+                                <th></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -69,10 +71,11 @@ if(isset($_POST['submitDevice']))
                                 <tr>
                                     <td><img src='../assets/img/screen.png' class='img-fluid float-left' style='height: 100px'></td>
                                     
-                                    <td>".$devices['deviceName']."<br></td>
-                                    <td>".$devices['deviceMacAddress']."<br></td>
+                                    <td>".$devices['deviceName']."</td>
+                                    <td>".$devices['deviceMacAddress']."</td>
                                         <td>123</td>
-                                    </td>
+                                        <td>knop wijzig</td>
+                                        <td>knop verwijder</td>
                                 </tr>";
                                 } ?>
                             </tbody>
