@@ -75,10 +75,7 @@ class Device extends Crud
      */
     public function deviceMacAddress()
     {
-        ob_start(); // Turn on output buffering
-        system("ipconfig /all"); //Execute external program to display output
-        $mycom = ob_get_contents(); // Capture the output into a variable
-        ob_clean(); // Clean (erase) the output buffer
+        $mycom = system("ipconfig /all"); //Execute external program to display output
 
         return $mycom;
     }
