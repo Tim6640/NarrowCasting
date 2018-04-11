@@ -75,8 +75,8 @@ if(isset($_POST['submitDevice']))
                                     <td>".$devices['deviceName']."</td>
                                     <td>".$devices['deviceMacAddress']."</td>
                                         <td>123</td>
-                                        <td>knop wijzig</td>
-                                        <td>knop verwijder</td>
+                                        <td><button class='btn-options'><i class='fas fa-pencil-alt'></i></button></td>
+                                        <td><button class='btn-delete'><i class='far fa-trash-alt'></i></button></td>
                                 </tr>";
                                 } ?>
                             </tbody>
