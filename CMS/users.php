@@ -24,7 +24,15 @@ if (isset($_POST['logOut']))
 }
 
 ?>
-
+<script>
+    $(document).ready(function() {
+        $('#showUsers').DataTable( {
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Dutch.json"
+            }
+        } );
+    } );
+</script>
 <section id="main">
     <div class="container">
         <div class="row">
@@ -36,16 +44,30 @@ if (isset($_POST['logOut']))
                         <h3 class="panel-title"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Beheerders</h3>
                     </div>
                     <div class="panel-body">
-                        <table class="table table-striped">
+                        <table class="table table-striped" id="showUsers" name="showUsers">
+                            <thead>
+                            <tr>
+                                <th></th>
+                                <th>Naam</th>
+                                <th>Email</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
                             <?php foreach($user->getUsers() as $users){
                                 echo "
                                 <tr>
-                                    <td><td><img src='../assets/img/user.png' class='img-fluid float-left' style='height: 100px'></td></td>
-                                    <td>Naam Beheerder: ".$users['userName']."<br>
-                                        E-mail: ".$users['userEmail']."<br>
-                                    </td>
+                                    <td><img src='../assets/img/user.png' class='img-fluid float-left' style='height: 100px'></td>
+                                    
+                                    <td>".$users['userName']."</td>
+                                    <td>".$users['userEmail']."</td>
+                                        <td>knop wijzig</td>
+                                        <td>knop verwijder</td>
                                 </tr>";
                             } ?>
+                            </tbody>
+
                         </table>
                     </div>
                 </div>

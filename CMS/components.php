@@ -25,7 +25,15 @@ if (isset($_POST['logOut']))
 }
 
 ?>
-
+<script>
+    $(document).ready(function() {
+        $('#showComponent').DataTable( {
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Dutch.json"
+            }
+        } );
+    } );
+</script>
 <section id="main">
     <div class="container">
         <div class="row">
@@ -37,17 +45,30 @@ if (isset($_POST['logOut']))
                         <h3 class="panel-title"><i class="fa fa-puzzle-piece"></i> Componenten</h3>
                     </div>
                     <div class="panel-body">
-                        <table class="table table-striped">
+                        <table class="table table-striped" id="showComponent" name="showComponent">
+                            <thead>
+                            <tr>
+                                <th></th>
+                                <th>Component naam</th>
+                                <th>Status</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
                             <?php foreach($component->getComponents() as $components){
                                 echo "
                                 <tr>
-                                    <td><td><img src='../assets/img/Microcontrolller-01-512.png' class='img-fluid float-left' style='height: 100px'></td></td>
-                                    <td>
-                                        Naam: ".$components['componentName']."<br>
-                                        Status: ".$components['componentActive']."
-                                    </td>
+                                    <td><img src='../assets/img/Microcontrolller-01-512.png' class='img-fluid float-left' style='height: 100px'></td>
+                                    
+                                    <td>".$components['componentName']."</td>
+                                    <td>".$components['componentActive']."</td>
+                                        <td>knop wijzig</td>
+                                        <td>knop verwijder</td>
                                 </tr>";
                             } ?>
+                            </tbody>
+
                         </table>
                     </div>
                 </div>
