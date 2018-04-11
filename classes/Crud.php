@@ -340,7 +340,6 @@ private $prop_value;
 */
     public function deleteFromTable()
     {
-
       $table = $this->getPropTable();
       $columns = $this->getPropColumns();
       $whereConditions = $this->getPropWhereConditions();
@@ -364,5 +363,27 @@ private $prop_value;
       //binding the $wherecondition
       $query->bindParam(":".$column , $whereConditions);
       $query-> execute();
+    }
+
+    public function distinctSelectFromTable()
+    {
+        $table = $this->getPropTable();
+        $columns = $this->getPropColumns();
+        $countArrayColumns = count($columns);
+        $counterColumns = 1;
+        $sql = "SELECT DISTINCT";
+
+        foreach ($columns as $column)
+        {
+            $sql .= "`$column` = :$column";
+            if ($counterColumns<$countArrayColumns)
+            {
+                $sql .= ", ";
+            }
+            $counterColumns++;
+        }
+        $sql .= "FROM ";
+        $sql .= $table;
+        var_dump($sql);
     }
 }

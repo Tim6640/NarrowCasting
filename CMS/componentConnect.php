@@ -45,38 +45,55 @@ if (isset($_POST['logOut']))
         <div class="row">
             <div class="col-md-3">
                 <div class="list-group">
-                    <form method="post" class="list-group-item" title="settings" name="settings">
-                        <p>Apparaat:
-                            <span>
-                                <select title="device" name="device">
-                                    <?php
-                                    foreach($device->getDevices() as $devices)
-                                    {
-                                        echo '
-                                        <option value="'.$devices['deviceID'].'">'.$devices['deviceName'].'</option>
-                                        ';
-                                    }
-                                    ?>
-                                </select>
-                            </span>
-                        </p>
-                        <p>Pagina:
-                            <span>
-                                <select title="device" name="device">
-                                    <?php
-                                    $device->setPropDeviceID($_POST['device']);
-                                    var_dump(array_unique($device->getDeviceConfig()));
-                                    foreach(array_unique($device->getDeviceConfig()) as $devices)
-                                    {
-                                        echo '
-                                        <option value="'.$devices['deviceID'].'">'.$devices['deviceName'].'</option>
-                                        ';
-                                    }
-                                    ?>
-                                </select>
-                            </span>
-                        </p>
-                    </form>
+                    <div class="list-group-item">
+                        <form method="post" title="settings" name="device">
+                            <p>Apparaat:
+                                <span>
+                                    <select onselect="send(key)" id="device" title="device" name="device">
+                                        <?php
+                                        foreach($device->getDevices() as $devices)
+                                        {
+                                            echo '
+                                            <option value="'.$devices['deviceID'].'">'.$devices['deviceName'].'</option>
+                                            ';
+                                        }
+                                        ?>
+                                    </select>
+                                    <script type="text/javascript">
+        function select() {
+            function send(key) {
+                window.location.href = "componentConnect.php?id=" + key;
+            }
+            send(select.options[select.selectedIndex].value);
+        }
+</script>
+                                </span>
+                            </p>
+                        </form>
+                    <?php
+                        $device->setPropDeviceID($_GET['id']);
+                        $slides = array_unique($device->getDeviceConfigTable("slideID"), SORT_NUMERIC);
+                        var_dump($slides);
+                        ?>
+                        <form method="post" title="settings" name="slide">
+                            <p>Pagina:
+                                <span>
+                                    <select id="slideSettings" title="slide" name="slide">
+                                        <?php
+                                        $device->setPropDeviceID($_GET['id']);
+                                        $slides = array_unique($device->getDeviceConfigTable("slideID"), SORT_NUMERIC);
+//                                        foreach( as $devices)
+//                                        {
+//                                            echo '
+//                                            <option value="'.$devices['deviceID'].'">'.$devices['deviceName'].'</option>
+//                                            ';
+//                                        }
+//                                        ?>
+                                    </select>
+                                </span>
+                            </p>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

@@ -6,7 +6,7 @@
  * Time: 14:29
  */
 //session_start();
-$breadCrumb = "Beheerders"; //basename(__FILE__, '.php');
+$breadCrumb = "Gebruikers";
 include_once("../includes/cmsHeader.php");
 $user = new User();
 if(!isset($_SESSION['login']))
