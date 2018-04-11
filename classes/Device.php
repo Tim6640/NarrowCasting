@@ -35,6 +35,7 @@ class Device extends Crud
         parent::__construct("device", $columns, "deviceMacAddress", $macAddress);
         $deviceInfo = $this->selectFromTable();
         @$this->prop_deviceID = $deviceInfo[0]['deviceID']; //the @ symbol prevents the error notice from displaying, this error should be resolved in future additions.
+        $this->setPropWhere("");
     }
 
     /**
@@ -116,6 +117,13 @@ class Device extends Crud
         $this->setPropValue($values);
         $this->insertIntoTable();
     }
+
+    public function getDistinctSlidesID(){
+        $this->setPropTable("device_template_component");
+        $this->setPropColumns("slideID");
+        $this->distinctSelectFromTable();
+    }
+
 
     ///////////////////////////////////////////////////Still needs update
 

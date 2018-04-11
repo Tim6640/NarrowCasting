@@ -21,16 +21,16 @@ switch ($active) {
     case("dashboard"):
         $dashboard = "active";
         break;
-    case("devices"):
+    case("Apparaten"):
         $devices = "active";
         break;
-    case("components"):
+    case("Componenten"):
         $components = "active";
         break;
-    case("users"):
+    case("Gebruikers"):
         $users = "active";
         break;
-    case("componentConnect"):
+    case("Componenten koppelen"):
         $componentConnect = "active";
         break;
 }
