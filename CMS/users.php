@@ -62,8 +62,8 @@ if (isset($_POST['logOut']))
                                     
                                     <td>".$users['userName']."</td>
                                     <td>".$users['userEmail']."</td>
-                                        <td>knop wijzig</td>
-                                        <td>knop verwijder</td>
+                                        <td><button class='btn-edit'><i class='fas fa-pencil-alt'></i> Wijzig</button></td>
+                                        <td><button class='btn-delete'><i class='far fa-trash-alt'></i> Verwijder</button></td>
                                 </tr>";
                             } ?>
                             </tbody>

@@ -63,8 +63,8 @@ if (isset($_POST['logOut']))
                                     
                                     <td>".$components['componentName']."</td>
                                     <td>".$components['componentActive']."</td>
-                                        <td>knop wijzig</td>
-                                        <td>knop verwijder</td>
+                                        <td><button class='btn-options'><i class='fas fa-pencil-alt'></i> Wijzig</button></td>
+                                        <td><button class='btn-delete'><i class='far fa-trash-alt'></i> Verwijder</button</td>
                                 </tr>";
                             } ?>
                             </tbody>
