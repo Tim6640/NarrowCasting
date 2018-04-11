@@ -40,7 +40,9 @@ if (isset($_POST['logOut']))
                             <?php foreach($user->getUsers() as $users){
                                 echo "
                                 <tr>
-                                    <td><td><img src='../assets/img/user.png' class='img-fluid float-left' style='height: 100px'></td></td>
+                                    <td><td><img src='../assets/img/user.png' class='img-fluid float-left' style='height: 100px'><br>
+                                    <button class='btn-edit'><i class='fas fa-pencil-alt'></i> Wijzig</button>
+                                    <button class='btn-delete'><i class='far fa-trash-alt'></i> Verwijder</button></td></td>
                                     <td>Naam Beheerder: ".$users['userName']."<br>
                                         E-mail: ".$users['userEmail']."<br>
                                     </td>

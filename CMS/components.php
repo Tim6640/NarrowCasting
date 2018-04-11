@@ -41,7 +41,10 @@ if (isset($_POST['logOut']))
                             <?php foreach($component->getComponents() as $components){
                                 echo "
                                 <tr>
-                                    <td><td><img src='../assets/img/Microcontrolller-01-512.png' class='img-fluid float-left' style='height: 100px'></td></td>
+                                    <td><td><img src='../assets/img/Microcontrolller-01-512.png' class='img-fluid float-left' style='height: 100px'><br>
+                                    <button class='btn-options'><i class='fas fa-pencil-alt'></i> Wijzig</button>
+                                    <button class='btn-delete'><i class='far fa-trash-alt'></i> Verwijder</button></td></td>
+                                    </td></td>
                                     <td>
                                         Naam: ".$components['componentName']."<br>
                                         Status: ".$components['componentActive']."
