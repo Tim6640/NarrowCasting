@@ -17,6 +17,7 @@ if(!isset($_SESSION['login']))
 
 if (isset($_POST['logOut']))
 {
+    session_unset();
     session_destroy();
     header("Location: ../pages/login.php");
     die();
