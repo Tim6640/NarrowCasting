@@ -7,7 +7,7 @@
  */
 //session_start();
 $title = "Dashboard";
-$breadCrumb = basename(__FILE__, '.php');
+$breadCrumb = "Dashboard"; //basename(__FILE__, '.php');
 include_once ("../includes/cmsHeader.php");
 
 if(!isset($_SESSION['login']))
@@ -18,6 +18,7 @@ if(!isset($_SESSION['login']))
 
 if (isset($_POST['logOut']))
 {
+    session_unset();
     session_destroy();
     header("Location: ../pages/login.php");
     die();
@@ -43,6 +44,8 @@ if(isset($_GET['id'])){
                     </div>
                     <div class="panel-body">
                         <?php
+                        $device->setPropWhere("");
+                        $device->setPropWhereConditions("");
                         foreach ($device->getDevices() as $devices)
                         {
                             $device->setPropWhereConditions($devices['deviceID']);

@@ -18,6 +18,7 @@ if(!isset($_SESSION['login']))
 
 if (isset($_POST['logOut']))
 {
+    session_unset();
     session_destroy();
     header("Location: ../pages/login.php");
     die();
@@ -42,7 +43,7 @@ if (isset($_POST['logOut']))
                                 <tr>
                                     <td><td><img src='../assets/img/Microcontrolller-01-512.png' class='img-fluid float-left' style='height: 100px'></td></td>
                                     <td>
-                                        Component name: ".$components['componentName']."<br>
+                                        Naam: ".$components['componentName']."<br>
                                         Status: ".$components['componentActive']."
                                     </td>
                                 </tr>";
