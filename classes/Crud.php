@@ -361,7 +361,7 @@ private $prop_value;
       }
       $query = $this->connect()->prepare($sql);
       //binding the $wherecondition
-      $query->bindParam(":".$column , $whereConditions);
+      $query->bindParam(":".$whereConditions , $whereConditions);
       $query-> execute();
     }
 
@@ -369,13 +369,15 @@ private $prop_value;
     {
         $table = $this->getPropTable();
         $columns = $this->getPropColumns();
+        $where = $this->getPropWhere();
+        $whereConditions = $this->getPropWhereConditions();
         $countArrayColumns = count($columns);
         $counterColumns = 1;
         $sql = "SELECT DISTINCT";
 
         foreach ($columns as $column)
         {
-            $sql .= "`$column` = :$column";
+            $sql .= "`$column`";
             if ($counterColumns<$countArrayColumns)
             {
                 $sql .= ", ";
@@ -384,6 +386,17 @@ private $prop_value;
         }
         $sql .= "FROM ";
         $sql .= $table;
-        var_dump($sql);
+
+        if($where !== "")
+        {
+            $sql .= " WHERE $where = '$whereConditions'";
+        }
+
+        $query = $this->connect()->prepare($sql);
+        //binding the $wherecondition
+        $query->bindParam(":".$whereConditions , $whereConditions);
+        $query-> execute();
+        $result = $query->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
     }
 }

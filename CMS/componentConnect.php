@@ -49,7 +49,7 @@ if (isset($_POST['logOut']))
                         <form method="post" title="settings" name="device">
                             <p>Apparaat:
                                 <span>
-                                    <select onselect="send(key)" id="device" title="device" name="device">
+                                    <select onselect="select()" id="device" title="device" name="device">
                                         <?php
                                         foreach($device->getDevices() as $devices)
                                         {
@@ -60,35 +60,33 @@ if (isset($_POST['logOut']))
                                         ?>
                                     </select>
                                     <script type="text/javascript">
-        function select() {
-            function send(key) {
-                window.location.href = "componentConnect.php?id=" + key;
-            }
-            send(select.options[select.selectedIndex].value);
-        }
-</script>
+                                            function select() {
+                                                function send(key) {
+                                                    window.location.href = "componentConnect.php?id=" + key;
+                                                }
+                                                send(select.options[select.selectedIndex].value);
+                                            }
+                                    </script>
                                 </span>
                             </p>
                         </form>
-                    <?php
-                        $device->setPropDeviceID($_GET['id']);
-                        $slides = array_unique($device->getDeviceConfigTable("slideID"), SORT_NUMERIC);
-                        var_dump($slides);
-                        ?>
-                        <form method="post" title="settings" name="slide">
+
+                        <form method="post" title="settings" name="pagina">
                             <p>Pagina:
                                 <span>
-                                    <select id="slideSettings" title="slide" name="slide">
+                                    <select id="pageInfo" title="slide" name="slide">
                                         <?php
-                                        $device->setPropDeviceID($_GET['id']);
-                                        $slides = array_unique($device->getDeviceConfigTable("slideID"), SORT_NUMERIC);
-//                                        foreach( as $devices)
-//                                        {
-//                                            echo '
-//                                            <option value="'.$devices['deviceID'].'">'.$devices['deviceName'].'</option>
-//                                            ';
-//                                        }
-//                                        ?>
+                                        $device->setPropDeviceID(2);
+                                        $slideID = $device->getDistinctSlidesID();
+                                        foreach($slideID as $slide)
+                                        {
+                                            if(!$slide['slideID'] == null) {
+                                                echo '
+                                                        <option value="' . $slide['slideID'] . '">Pagina ' . $slide['slideID'] . '</option>
+                                                    ';
+                                            }
+                                        }
+                                        ?>
                                     </select>
                                 </span>
                             </p>
@@ -97,5 +95,26 @@ if (isset($_POST['logOut']))
                 </div>
             </div>
         </div>
-    </div>
+
+        <div class="row">
+            <div class="col-md-3">
+                <div class="list-group">
+                    <div class="list-group-item">
+                        <form method="post" title="info" name="paginaInfo">
+                            <h4>Pagina info</h4>
+
+                            <?php
+                            $slide = new Slide();
+                            $slideInfo = $slide->getSlidesWhere("slideID", 1)[0];
+                            echo '
+                                    <p>Naam: '.$slideInfo["slideName"].'</p>
+                                    <p>Interval: <span><input placeholder="'.$slideInfo["slideInterval"].'" title="interval" name="interval" type="number" style="width: 100px;"></span></p>
+                                    <p>Componenten:  </p>
+                                ';
+                            ?>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
 </section>

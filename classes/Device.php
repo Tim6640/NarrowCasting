@@ -127,8 +127,10 @@ class Device extends Crud
 
     public function getDistinctSlidesID(){
         $this->setPropTable("device_template_component");
-        $this->setPropColumns("slideID");
-        $this->distinctSelectFromTable();
+        $this->setPropColumns(array("slideID"));
+        $this->setPropWhere("deviceID");
+        $this->setPropWhereConditions($this->getPropDeviceID());
+        return $this->distinctSelectFromTable();
     }
 
 
